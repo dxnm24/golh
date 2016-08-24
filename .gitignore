@@ -1,5 +1,7 @@
 vendor/
 node_modules/
+public/images
+public/thumbs
 
 # Laravel 4 specific
 bootstrap/compiled.php
