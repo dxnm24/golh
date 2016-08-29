@@ -1,4 +1,7 @@
 <?php
+
+// Route::resource('test', 'TestController');
+
 Route::get('/sitemap.xml', 'SiteController@sitemap');
 Route::get('/tim-kiem', ['uses' => 'SiteController@search', 'as' => 'site.search']);
 Route::get('/', ['uses' => 'SiteController@index', 'as' => 'site.index']);
