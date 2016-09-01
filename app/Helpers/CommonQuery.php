@@ -54,9 +54,9 @@ class CommonQuery
     {
         $data = DB::table($table)
             ->select('id', 'name', 'parent_id')
-            ->where('status', ACTIVE)
             ->where('parent_id', 0)
             ->where('id', '!=', $currentId)
+            ->where('status', ACTIVE)
             ->pluck('name', 'id');
         $firstValue = ($currentId!=0)?0:'';
         return array_add($data, $firstValue, '-- Chọn');
@@ -65,8 +65,8 @@ class CommonQuery
     {
         $data = DB::table($table)
             ->select('id', 'name', 'parent_id')
-            ->where('status', ACTIVE)
             ->where('id', '!=', $currentId)
+            ->where('status', ACTIVE)
             ->get();
         $firstValue = ($currentId!=0)?0:'';
         $output = self::_visit($data);

@@ -78,9 +78,8 @@ a:focus {
 	font-size: 3.125rem;
 }
 .menu {
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: middle;
+    float: left;
+    margin-top: 0.938rem;
     > li > a {
 	    color: #fff;
 	    font-size: 0.938rem;
@@ -109,6 +108,30 @@ a:focus {
 	> li.current:first-child a {
 		border-bottom: none;
 	}
+	> li > ul {
+    	margin-top: 0.625rem;
+    	background: #f2f2f3;
+    	border: 0.188rem solid #e03800;
+    	-webkit-border-radius: 0.188rem;
+		border-radius: 0.188rem;
+    	li {
+    		a {
+	    		color: #262626;
+	    		padding: 0.625rem 0.313rem;
+	    		font-size: 0.813rem;
+    		}
+    		a:hover,
+    		a:focus {
+    			color: #e03800;
+    		}
+    	}
+    	li:first-child a {
+    		padding: 0.625rem 0.313rem;
+    	}
+    }
+}
+.dropdown.menu>li.is-dropdown-submenu-parent>a:after {
+    border-color: #e03800 transparent transparent;
 }
 .menu-mobile {
 	display: block;
@@ -120,7 +143,7 @@ a:focus {
 }
 // END MENU
 a.logo {
-    display: inline-block;
+    float: left;
 	> img {
 		height: 4rem;
 		max-width: 100%;

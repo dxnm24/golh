@@ -31,8 +31,8 @@
 	      	</button>
 	      	<ul class="mobile-ofc vertical menu menu-mobile">
 	      		<li class="title">Menu</li>
-	      		@if($topmenu)
-		      		@foreach($topmenu as $key => $value)
+	      		@if($mobilemenu)
+		      		@foreach($mobilemenu as $key => $value)
 						<li {{ checkCurrent(url($value->url)) }}><a href="{{ $value->url }}">{!! $value->name !!}</a></li>
 					@endforeach
 				@endif

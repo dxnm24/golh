@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Helpers\CommonVideo;
+use DB;
 
 class TestController extends Controller
 {
@@ -21,4 +22,5 @@ class TestController extends Controller
     	// $result = CommonVideo::getLinkFacebookVideo($link);
     	// dd($result);
     }
+
 }

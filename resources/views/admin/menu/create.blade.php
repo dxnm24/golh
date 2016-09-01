@@ -29,6 +29,7 @@
 					</div>
 					<div class="form-group">
 						<label for="url">URL</label>
+						<p>Chú ý: Nhập # nếu không có đường dẫn</p>
 						<div class="row">
 							<div class="col-sm-8">
 								<input name="url" type="text" value="{{ old('url') }}" class="form-control">
@@ -43,7 +44,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group" style="display: none;">
+					<div class="form-group">  <!-- style="display: none;" -->
 						<label for="parent_id">Menu cha</label>
 						<div class="row">
 							<div class="col-sm-8">

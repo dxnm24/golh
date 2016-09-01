@@ -27,6 +27,8 @@ define('MENUTYPE4', 4);
 define('MENUTYPE5', 5);
 //menu side tag game
 define('MENUTYPE6', 6);
+//menu mobile off canvas
+define('MENUTYPE7', 7);
 //pagination
 define('PAGINATION', 20);
 define('PAGINATE', 12);

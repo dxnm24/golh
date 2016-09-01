@@ -36,7 +36,8 @@ class CommonOption
             MENUTYPE3=>'Bottom menu',
             MENUTYPE4=>'Top game of year menu',
             MENUTYPE5=>'Seri menu',
-            MENUTYPE6=>'Tag menu'
+            MENUTYPE6=>'Tag menu',
+            MENUTYPE7=>'Mobile menu'
         );
     }
     static function getMenuType($menuType=ACTIVE)

@@ -1,13 +1,7 @@
 <header class="show-for-medium">
 	<div class="row column">
 		<a href="/" class="logo"><img src="/img/logo.png" alt="" /></a>
-		@if($topmenu)
-		<ul class="menu">
-			@foreach($topmenu as $key => $value)
-				<li {{ checkCurrent(url($value->url)) }}><a href="{{ CommonUrl::getUrl($value->url) }}">{!! $value->name !!}</a></li>
-			@endforeach
-		</ul>
-		@endif
+		{!! $topmenu !!}
 	</div>
 </header>
 <div class="search">
