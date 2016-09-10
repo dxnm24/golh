@@ -33,6 +33,7 @@ class CommonGame
 				$query = $query->where('start_date', '<=', CommonMethod::datetimeConvert($request->end_date, '23:59:59', 1));
 			}
 		})
+		->whereNull('deleted_at')
 		->orderBy('start_date', 'desc')
 		->orderBy('id', 'desc')
 		->paginate(PAGINATION);
