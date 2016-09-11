@@ -39,7 +39,7 @@
 		<?php
 			if(isset($seriParent)) {
 				$breadcrumb = array(
-					['name' => $seriParent->name, 'link' => CommonUrl::getUrl($seriParent->slug)],
+					['name' => $seriParent->name, 'link' => url($seriParent->slug)],
 					['name' => $h1, 'link' => '']
 				);
 			} else {

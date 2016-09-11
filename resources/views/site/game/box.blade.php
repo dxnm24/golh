@@ -3,11 +3,11 @@
 	if(isset($data->seri) && $data->seri == ACTIVE) {
 		$checkSeri = true;
 		$seriClass = ' class=seri';
-		$url0 = CommonUrl::getUrl2($type->slug, $data[0]->slug);
+		$url0 = url($type->slug.'/'.$data[0]->slug);
 	} else {
 		$checkSeri = false;
 		$seriClass = '';
-		$url0 = CommonUrl::getUrl($data[0]->slug);
+		$url0 = url($data[0]->slug);
 	}
 ?>
 <div class="row box-large">
@@ -15,9 +15,9 @@
 		<div class="item">
 			<a href="{{ $url0 }}" title="{!! $data[0]->name !!}"{{ $seriClass }}>
 				@if($checkSeri == true)
-				<span><img src="{{ $data[0]->image }}" alt="{!! $data[0]->name !!}" title="{!! $data[0]->name !!}"></span>
+				<span><img alt="{!! $data[0]->name !!}" title="{!! $data[0]->name !!}" data-src="{{ url($data[0]->image) }}" class="lazyload"></span>
 				@else
-				<img src="{{ $data[0]->image }}" alt="{!! $data[0]->name !!}" title="{!! $data[0]->name !!}">
+				<img alt="{!! $data[0]->name !!}" title="{!! $data[0]->name !!}" data-src="{{ url($data[0]->image) }}" class="lazyload">
 				@endif
 			</a>
 		</div>
@@ -34,11 +34,11 @@
 		if(isset($data->seri) && $data->seri == ACTIVE) {
 			$checkSeri = true;
 			$seriClass = ' class=seri';
-			$url = CommonUrl::getUrl2($type->slug, $value->slug);
+			$url = url($type->slug.'/'.$value->slug);
 		} else {
 			$checkSeri = false;
 			$seriClass = '';
-			$url = CommonUrl::getUrl($value->slug);
+			$url = url($value->slug);
 		}
 	?>
 	@if($key>0)
@@ -47,9 +47,9 @@
 			<!-- 400x370 -->
 			<a href="{{ $url }}" title="{!! $value->name !!}"{{ $seriClass }}>
 				@if($checkSeri == true)
-				<span><img src="{{ $value->image }}" alt="{!! $value->name !!}" title="{!! $value->name !!}"></span>
+				<span><img alt="{!! $value->name !!}" title="{!! $value->name !!}" data-src="{{ url($value->image) }}" class="lazyload"></span>
 				@else
-				<img src="{{ $value->image }}" alt="{!! $value->name !!}" title="{!! $value->name !!}">
+				<img alt="{!! $value->name !!}" title="{!! $value->name !!}" data-src="{{ url($value->image) }}" class="lazyload">
 				@endif
 			</a>
 			<h2><a href="{{ $url }}" title="{!! $value->name !!}">{!! $value->name !!}</a></h2>

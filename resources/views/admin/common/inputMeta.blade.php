@@ -26,6 +26,7 @@
 </div>
 <div class="form-group">
 	<label for="meta_image">Meta image</label>
+	<p>Ảnh chia sẻ trên facebook: cỡ lớn: 1200 x 630, cỡ nhỏ: 600 x 315, tối thiếu: 200 x 200</p>
 	<p>Định dạng jpg, jpeg, png. Tên thư mục & ảnh phải là tiếng việt không dấu, không chứa dấu cách + kí tự đặc biệt. Dung lượng ảnh nhẹ (< 1mb)</p>
 	<div class="row">
 		<div class="col-sm-6">
@@ -65,6 +66,7 @@
 </div>
 <div class="form-group">
 	<label for="meta_image">Meta image</label>
+	<p>Ảnh chia sẻ trên facebook: cỡ lớn: 1200 x 630, cỡ nhỏ: 600 x 315, tối thiếu: 200 x 200</p>
 	<p>Định dạng jpg, jpeg, png. Tên thư mục & ảnh phải là tiếng việt không dấu, không chứa dấu cách + kí tự đặc biệt. Dung lượng ảnh nhẹ (< 1mb)</p>
 	<div class="row">
 		<div class="col-sm-6">

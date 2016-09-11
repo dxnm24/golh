@@ -69,3 +69,42 @@ function checkCurrent($url, $home=null)
     }
     return;
 }
+//check file exist
+function remoteFileExists($url) {
+    $curl = curl_init($url);
+    //don't fetch the actual page, you only want to check the connection is ok
+    curl_setopt($curl, CURLOPT_NOBODY, true);
+    //do request
+    $result = curl_exec($curl);
+    $ret = false;
+    //if request did not fail
+    if ($result !== false) {
+        //if request was ok, check response code
+        $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+        if ($statusCode == 200) {
+            $ret = true;
+        }
+    }
+    curl_close($curl);
+    return $ret;
+}
+//Get image dimensions facebook og:image
+function getImageDimensionsOg($image='')
+{
+    $currentUrl = url()->current();
+    if(strpos($currentUrl, 'localhost')) {
+        return;
+    }
+    if(!empty($image)) {
+        $imageUrl = url($image);
+        $checkFile = remoteFileExists($imageUrl);
+        if($checkFile === false) {
+            return;
+        }
+        list($width, $height) = getimagesize($imageUrl);
+        $string = '<meta property="og:image:width" content="'.$width.'" /><meta property="og:image:height" content="'.$height.'" />';
+        return $string;
+    }
+    return;
+}

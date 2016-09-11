@@ -66,7 +66,7 @@
 		<div class="gameinfo">
 			<div class="info">
 				<div class="row">
-					<div class="medium-2 small-3 columns"><img src="{{ $game->image }}" alt="{!! $game->name !!}" class="info-avatar" /></div>
+					<div class="medium-2 small-3 columns"><img src="{{ url($game->image) }}" alt="{!! $game->name !!}" class="info-avatar" /></div>
 					<div class="medium-10 small-9 columns">
 						<p class="summary">{!! $game->summary !!}</p>
 						<p class="view"><span>View:</span> {{ number_format(getZero($game->view, 0, '.', '.')) }}</p>
@@ -96,7 +96,7 @@
 				<div class="tags-icon"><i class="fa fa-tags" aria-hidden="true"></i> Chuyên mục</div>
 				<ul>
 					@foreach($tags as $value)
-					<li><h2><a href="{{ CommonUrl::getUrlGameTag($value->slug) }}" title="{!! $value->name !!}">{!! $value->name !!}</a></h2></li>
+					<li><h2><a href="{{ url('tag/'.$value->slug) }}" title="{!! $value->name !!}">{!! $value->name !!}</a></h2></li>
 					@endforeach
 				</ul>
 			</div>

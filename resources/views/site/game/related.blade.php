@@ -1,9 +1,9 @@
 @if($data && count($gameData) > 0)
 <?php 
 	if(isset($dataSeri)) {
-		$url = CommonUrl::getUrl2($dataSeri->slug, $data->slug); 	
+		$url = url($dataSeri->slug.'/'.$data->slug); 	
 	} else {
-		$url = CommonUrl::getUrl($data->slug); 
+		$url = url($data->slug); 
 	}
 ?>
 <div class="gametypes">

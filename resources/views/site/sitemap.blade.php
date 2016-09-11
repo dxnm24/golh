@@ -15,9 +15,9 @@
         <?php 
             if($value->parent_id > 0) {
                 $parentSlug = CommonQuery::getFieldById('game_types', $value->parent_id, 'slug');
-                $gameTypeUrl = CommonUrl::getUrl2($parentSlug, $value->slug);
+                $gameTypeUrl = url($parentSlug.'/'.$value->slug);
             } else {
-                $gameTypeUrl = CommonUrl::getUrl($value->slug);
+                $gameTypeUrl = url($value->slug);
             }
         ?>
         <url>
@@ -30,7 +30,7 @@
     @if($gameTags)
         @foreach($gameTags as $value)
         <url>
-        	<loc>{{ CommonUrl::getUrlGameTag($value->slug) }}</loc>
+        	<loc>{{ url('tag/'.$value->slug) }}</loc>
     		<changefreq>weekly</changefreq>
     		<priority>0.8</priority>
         </url>
@@ -39,7 +39,7 @@
     @if($games)
         @foreach($games as $value)
     	    <url>
-    	    	<loc>{{ CommonUrl::getUrl($value->slug) }}</loc>
+    	    	<loc>{{ url($value->slug) }}</loc>
     	    	<lastmod>{{ date('Y-m-d', strtotime($value->start_date)) }}</lastmod>
     			<changefreq>weekly</changefreq>
     			<priority>0.8</priority>

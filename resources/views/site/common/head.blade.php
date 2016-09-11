@@ -14,11 +14,19 @@
 	<meta name="title" content="{!! $meta_title !!}">
 	<meta name="keywords" content="{!! $meta_keyword !!}">
 	<meta name="description" content="{!! $meta_description !!}">
+	
 	<meta property="og:url" content="{!! url()->current() !!}" />
 	<meta property="og:title" content="{!! $meta_title !!}" />
 	<meta property="og:description" content="{!! $meta_description !!}" />
-	<meta property="og:image" content="{!! $meta_image !!}" />
-	<meta property="fb:app_id" content="{{ FACEBOOK_APPID }}" />
+	@if($meta_image)
+	<meta property="og:image" content="{!! url($meta_image) !!}" />
+	@endif
+	{!! getImageDimensionsOg($meta_image) !!}
+	@if(isset($isPlay))
+	<meta property="og:type" content="article" />
+	@endif
+
+	<meta property="fb:app_id" content="{!! FACEBOOK_APPID !!}" />
 	<link rel="icon" href="{!! url('img/favicon.png') !!}" type="image/x-icon">
 	<title>@yield('title')</title>
 	{!! GA !!}
