@@ -17,7 +17,7 @@
 		<h1>{{ PAGENOTFOUND }}</h1>
 	</div>
 	<div class="row column">
-		<p>Đường dẫn không tồn tại hoặc đã bị xóa. Xin mời bạn theo dõi các nội dung khác tại <a href="/"><strong>đây</strong></a></p>
+		<p>Đường dẫn không tồn tại hoặc đã bị xóa. Xin mời bạn theo dõi các nội dung khác <a href="/"><strong>tại đây</strong></a></p>
 	</div>
 </div>
 @endsection

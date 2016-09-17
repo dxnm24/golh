@@ -363,7 +363,8 @@ class SiteController extends Controller
         }
         //query
         $type = $this->getGameTypeBySlug($slug2, 1);
-        if(isset($type)) {
+        $typeParent = $this->getGameTypeBySlug($slug1);
+        if(isset($type) && isset($typeParent) && ($typeParent->id == $type->parent_id)) {
             $paginate = 1;
             $data = $this->getGameByRelationsQuery('type', $type->id)->paginate(PAGINATE);
             $total = count($data);
