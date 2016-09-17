@@ -7,10 +7,10 @@ use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Game;
+use DB;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\CommonMethod;
-use App\Helpers\CommonGame;
 use Cache;
 
 class GameController extends Controller
@@ -24,11 +24,48 @@ class GameController extends Controller
     {
         trimRequest($request);
         if($request->except('page')) {
-            $data = CommonGame::adminSearchGame($request);
+            $data = self::searchGame($request);
         } else {
             $data = Game::orderBy('start_date', 'desc')->orderBy('id', 'desc')->paginate(PAGINATION);
         }
         return view('admin.game.index', ['data' => $data, 'request' => $request]);
+    }
+
+    private function searchGame($request)
+    {
+        $data = DB::table('games')->where(function ($query) use ($request) {
+            if ($request->name != '') {
+                $slug = CommonMethod::convert_string_vi_to_en($request->name);
+                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/i', '-', $slug));
+                $query = $query->where('slug', 'like', '%'.$slug.'%');
+            }
+            if($request->type != '') {
+                $query = $query->where('type', $request->type);
+            }
+            if($request->type_id != '') {
+                $listGameId = DB::table('game_type_relations')
+                    ->where('type_id', $request->type_id)
+                    ->pluck('game_id');
+                $query = $query->whereIn('id', $listGameId);
+            }
+            if($request->seri != '') {
+                $query = $query->where('seri', $request->seri);
+            }
+            if($request->status != '') {
+                $query = $query->where('status', $request->status);
+            }
+            if($request->start_date != ''){
+                $query = $query->where('start_date', '>=', CommonMethod::datetimeConvert($request->start_date, '00:00:00', 1));
+            }
+            if($request->end_date != ''){
+                $query = $query->where('start_date', '<=', CommonMethod::datetimeConvert($request->end_date, '23:59:59', 1));
+            }
+        })
+        ->whereNull('deleted_at')
+        ->orderBy('start_date', 'desc')
+        ->orderBy('id', 'desc')
+        ->paginate(PAGINATION);
+        return $data;
     }
 
     /**

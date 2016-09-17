@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('admin.gametag.search')
+
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ route('admin.gametag.create') }}" class="btn btn-primary">Thêm Game tags</a>

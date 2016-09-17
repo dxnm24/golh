@@ -4,6 +4,8 @@
 
 @section('content')
 
+@include('admin.gametype.search')
+
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ route('admin.gametype.create') }}" class="btn btn-primary">Thêm Game type</a>

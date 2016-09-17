@@ -7,10 +7,15 @@ class CommonQuery
 {
     static function getAllWithStatus($table, $status = ACTIVE, $orderByPosition = null)
     {
+        $data = DB::table($table)->where('status', $status);
+        //if has softdelete
+        if(in_array($table, ['games', 'game_types'])) {
+            $data = $data->whereNull('deleted_at');
+        }
         if($orderByPosition != null) {
-            $data = DB::table($table)->where('status', $status)->orderByRaw(DB::raw("position = '0', position"))->get();
+            $data = $data->orderByRaw(DB::raw("position = '0', position"))->get();
         } else {
-            $data = DB::table($table)->where('status', $status)->get();
+            $data = $data->get();
         }
         if(count($data) > 0) {
             return $data;
@@ -19,22 +24,32 @@ class CommonQuery
     }
     static function getArrayWithStatus($table, $status = ACTIVE)
     {
-        $data = DB::table($table)->where('status', $status)->pluck('name', 'id');
+        $data = DB::table($table)->where('status', $status);
+        //if has softdelete
+        if(in_array($table, ['games', 'game_types'])) {
+            $data = $data->whereNull('deleted_at');
+        }
+        $data = $data->pluck('name', 'id');
         if(count($data) > 0) {
             return $data;
         }
         return null;
     }
-	static function getFieldById($table, $id, $field, $fieldIsNumber = null)
+    static function getFieldById($table, $id, $field, $fieldIsNumber = null)
     {
-    	$data = DB::table($table)->where('id', $id)->first();
-    	if($data) {
-    		return $data->$field;
-    	}
-    	if(isset($fieldIsNumber)) {
-    		return 0;
-    	}
-    	return '';
+        $data = DB::table($table)->where('id', $id);
+        //if has softdelete
+        if(in_array($table, ['games', 'game_types'])) {
+            $data = $data->whereNull('deleted_at');
+        }
+        $data = $data->first();
+        if($data) {
+            return $data->$field;
+        }
+        if(isset($fieldIsNumber)) {
+            return 0;
+        }
+        return '';
     }
     static function getAdByPosition($position=null)
     {
@@ -54,10 +69,14 @@ class CommonQuery
     {
         $data = DB::table($table)
             ->select('id', 'name', 'parent_id')
-            ->where('parent_id', 0)
-            ->where('id', '!=', $currentId)
             ->where('status', ACTIVE)
-            ->pluck('name', 'id');
+            ->where('parent_id', 0)
+            ->where('id', '!=', $currentId);
+        //if has softdelete
+        if(in_array($table, ['games', 'game_types'])) {
+            $data = $data->whereNull('deleted_at');
+        }
+        $data = $data->pluck('name', 'id');
         $firstValue = ($currentId!=0)?0:'';
         return array_add($data, $firstValue, '-- Chọn');
     }
@@ -65,9 +84,13 @@ class CommonQuery
     {
         $data = DB::table($table)
             ->select('id', 'name', 'parent_id')
-            ->where('id', '!=', $currentId)
             ->where('status', ACTIVE)
-            ->get();
+            ->where('id', '!=', $currentId);
+        //if has softdelete
+        if(in_array($table, ['games', 'game_types'])) {
+            $data = $data->whereNull('deleted_at');
+        }
+        $data = $data->get();
         $firstValue = ($currentId!=0)?0:'';
         $output = self::_visit($data);
         return array_add($output, $firstValue, '-- Chọn');

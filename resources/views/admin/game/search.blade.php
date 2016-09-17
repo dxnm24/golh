@@ -14,6 +14,10 @@
 				<label>Thể loại game</label>
 			  	{{ Form::select('type_id', array_add(CommonQuery::getArrayWithStatus('game_types'), '', '-- chọn'), $request->type_id, array('class' =>'form-control')) }}
 			</div>
+			<div class="input-group" style="width: 150px; display:inline-block;">
+				<label>Seri game</label>
+			  	{{ Form::select('seri', array(''=>'-- chọn',0=>'Chưa có seri'), $request->seri, array('class' =>'form-control')) }}
+			</div>
 			<!-- <div class="input-group" style="width: 150px; display:inline-block;">
 				<label>Kiểu xoay màn hình</label>
 			  	{{-- Form::select('screen', array_add(CommonOption::screenArray(), '', '-- chọn'), $request->screen, array('class' =>'form-control')) --}}

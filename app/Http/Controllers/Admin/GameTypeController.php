@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\GameType;
+use App\Models\Game;
 use DB;
 use Validator;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,35 @@ class GameTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = GameType::orderByRaw(DB::raw("position = '0', position"))
+        trimRequest($request);
+        if($request->except('page')) {
+            $data = self::searchGameType($request);
+        } else {
+            $data = GameType::orderByRaw(DB::raw("position = '0', position"))
                         ->orderBy('name', 'asc')
                         ->paginate(PAGINATION);
-        return view('admin.gametype.index', ['data' => $data]);
+        }
+        return view('admin.gametype.index', ['data' => $data, 'request' => $request]);
+    }
+
+    private function searchGameType($request)
+    {
+        $data = DB::table('game_types')->where(function ($query) use ($request) {
+            if ($request->name != '') {
+                $slug = CommonMethod::convert_string_vi_to_en($request->name);
+                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/i', '-', $slug));
+                $query = $query->where('slug', 'like', '%'.$slug.'%');
+            }
+            if($request->status != '') {
+                $query = $query->where('status', $request->status);
+            }
+        })
+        ->whereNull('deleted_at')
+        ->orderBy('name', 'asc')
+        ->paginate(PAGINATION);
+        return $data;
     }
 
     /**
@@ -169,6 +193,13 @@ class GameTypeController extends Controller
      */
     public function destroy($id)
     {
+        $games = Game::where('type_main_id', $id)
+            ->orWhere('seri', $id)
+            ->whereNull('deleted_at')
+            ->first();
+        if(isset($games)) {
+            return redirect()->route('admin.gametype.index')->with('warning', 'Không thể xóa vì có game trong thể loại này!'); 
+        }
         $data = GameType::find($id);
         $data->delete();
         Cache::flush();

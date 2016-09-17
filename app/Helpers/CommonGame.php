@@ -6,39 +6,6 @@ use App\Helpers\CommonMethod;
 
 class CommonGame
 {
-	static function adminSearchGame($request)
-	{
-		$data = DB::table('games')->where(function ($query) use ($request) {
-			if ($request->name != '') {
-				$slug = CommonMethod::convert_string_vi_to_en($request->name);
-				$slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/i', '-', $slug));
-				$query = $query->where('slug', 'like', '%'.$slug.'%');
-			}
-			if($request->type != '') {
-				$query = $query->where('type', $request->type);
-			}
-			if($request->type_id != '') {
-				$listGameId = DB::table('game_type_relations')
-					->where('type_id', $request->type_id)
-					->pluck('game_id');
-				$query = $query->whereIn('id', $listGameId);
-			}
-			if($request->status != '') {
-				$query = $query->where('status', $request->status);
-			}
-			if($request->start_date != ''){
-				$query = $query->where('start_date', '>=', CommonMethod::datetimeConvert($request->start_date, '00:00:00', 1));
-			}
-			if($request->end_date != ''){
-				$query = $query->where('start_date', '<=', CommonMethod::datetimeConvert($request->end_date, '23:59:59', 1));
-			}
-		})
-		->whereNull('deleted_at')
-		->orderBy('start_date', 'desc')
-		->orderBy('id', 'desc')
-		->paginate(PAGINATION);
-		return $data;
-	}
 	static function issetGameType($gameId, $typeId)
 	{
 		$count = DB::table('game_type_relations')

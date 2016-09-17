@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\GameTag;
+use App\Models\GameTagRelation;
+use DB;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\CommonMethod;
@@ -19,11 +21,33 @@ class GameTagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = GameTag::orderBy('id', 'desc')
-            ->paginate(PAGINATION);
-        return view('admin.gametag.index', ['data' => $data]);
+        trimRequest($request);
+        if($request->except('page')) {
+            $data = self::searchGameTag($request);
+        } else {
+            $data = GameTag::orderBy('id', 'desc')
+                ->paginate(PAGINATION);
+        }
+        return view('admin.gametag.index', ['data' => $data, 'request' => $request]);
+    }
+
+    private function searchGameTag($request)
+    {
+        $data = DB::table('game_tags')->where(function ($query) use ($request) {
+            if ($request->name != '') {
+                $slug = CommonMethod::convert_string_vi_to_en($request->name);
+                $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/i', '-', $slug));
+                $query = $query->where('slug', 'like', '%'.$slug.'%');
+            }
+            if($request->status != '') {
+                $query = $query->where('status', $request->status);
+            }
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(PAGINATION);
+        return $data;
     }
 
     /**
@@ -151,6 +175,7 @@ class GameTagController extends Controller
     public function destroy($id)
     {
         $data = GameTag::find($id);
+        GameTagRelation::where('tag_id', $id)->delete();
         $data->delete();
         Cache::flush();
         return redirect()->route('admin.gametag.index')->with('success', 'Xóa thành công');   
