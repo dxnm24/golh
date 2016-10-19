@@ -10,8 +10,9 @@ class Game extends Model
 	use SoftDeletes;
 	//type: game flash or html5...
 	//url: link direct to game (play or download)
+    //download: download link + notice for download
     protected $fillable = [
-        'name', 'slug', 'type_main_id', 'seri', 'related', 'type', 'url', 'summary', 'description', 'image', 'meta_title', 'meta_keyword', 'meta_description', 'meta_image', 'width', 'height', 'screen', 'play', 'position', 'start_date', 'view', 'status', 'lang',
+        'name', 'slug', 'type_main_id', 'seri', 'related', 'type', 'url', 'summary', 'description', 'image', 'meta_title', 'meta_keyword', 'meta_description', 'meta_image', 'download', 'width', 'height', 'screen', 'play', 'position', 'start_date', 'view', 'status', 'lang',
     ];
     public function gametyperelations()
     {

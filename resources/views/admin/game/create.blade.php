@@ -122,6 +122,14 @@
 						<div class="col-sm-12">
 							@include('admin.common.inputStatusLang', array('isCreate' => true))
 							@include('admin.common.inputContent', array('isCreate' => true))
+							<div class="form-group">
+								<label for="download">Nội dung Download</label>
+								<div class="row">
+									<div class="col-sm-8">
+										<textarea name="download" class="form-control elm1" rows="8">{{ old('download') }}</textarea>
+									</div>
+								</div>
+							</div>
 							@include('admin.common.inputMeta', array('isCreate' => true))
 						</div>
 					</div>

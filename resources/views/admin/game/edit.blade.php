@@ -125,6 +125,14 @@
 						<div class="col-sm-12">
 							@include('admin.common.inputStatusLang', array('isEdit' => true))
 							@include('admin.common.inputContent', array('isEdit' => true))
+							<div class="form-group">
+								<label for="download">Nội dung Download</label>
+								<div class="row">
+									<div class="col-sm-8">
+										<textarea name="download" class="form-control elm1" rows="8">{{ $data->download }}</textarea>
+									</div>
+								</div>
+							</div>
 							@include('admin.common.inputMeta', array('isEdit' => true))
 						</div>
 					</div>

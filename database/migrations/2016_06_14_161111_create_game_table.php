@@ -29,6 +29,7 @@ class CreateGameTable extends Migration
             $table->string('meta_keyword');
             $table->string('meta_description');
             $table->string('meta_image');
+            $table->text('download');
             $table->string('width')->default(FRAME_WIDTH);
             $table->string('height')->default(FRAME_HEIGHT);
             $table->integer('screen')->default(HORIZONTAL);
