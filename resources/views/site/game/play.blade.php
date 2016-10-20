@@ -80,6 +80,7 @@
 					</div>
 					@endif
 					<div class="column description">{!! $game->description !!}</div>
+					<div class="column description">{!! $game->download !!}</div>
 				</div>
 			</div>
 			
