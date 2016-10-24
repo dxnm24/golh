@@ -21,6 +21,8 @@ Route::group(['middleware' => ['auth:admin']], function ($router) {
     Route::resource('ad', 'AdController');
     //config
     Route::resource('config', 'ConfigController');
+    //clear all cache & views
+    Route::get('clearallstorage', 'AdminController@clearallstorage');
 });
 Route::get('login', ['uses' => 'AuthController@index', 'as' => 'admin.auth.index']);
 Route::post('login', ['uses' => 'AuthController@login', 'as' => 'admin.auth.login']);

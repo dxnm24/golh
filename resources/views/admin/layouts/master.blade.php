@@ -28,6 +28,7 @@
 	</div>
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
+		<a href="/admin/clearallstorage">Clear all storage</a> | 
 		<strong>Copyright &copy; 2016.</strong>
 	</footer>
 </div>

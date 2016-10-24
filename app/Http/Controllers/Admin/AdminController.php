@@ -10,4 +10,11 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+    public function clearallstorage()
+    {
+    	$url = url()->previous();
+    	\Cache::flush();
+    	\Artisan::call('view:clear');
+    	return redirect($url);
+    }
 }

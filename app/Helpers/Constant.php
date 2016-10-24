@@ -39,6 +39,7 @@ define('PAGENOTFOUND', '404 - Trang không tìm thấy');
 //device
 define('MOBILE', 1);
 define('PC', 2);
+define('TABLET', 3);
 //facebook id
 define('FACEBOOK_APPID', '');
 //google code

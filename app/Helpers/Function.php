@@ -14,6 +14,21 @@ function getDevice($device = null)
         return PC;
     }
 }
+function getDevice2($device = null)
+{
+    if(isset($device)) {
+        return $device;
+    }
+    //agent check tablet mobile desktop
+    $agent = new Agent();
+    if($agent->isMobile()) {
+        return MOBILE;
+    } elseif($agent->isTablet()) {
+        return TABLET;
+    } else {
+        return PC;
+    }
+}
 function trimRequest($request)
 {
     $input = $request->all();

@@ -22,7 +22,7 @@ class SiteController extends Controller
         }
         //query
         $data = DB::table('game_types')
-            ->select('id', 'name', 'slug', 'type', 'limited', 'sort_by')
+            ->select('id', 'name', 'slug', 'summary', 'type', 'limited', 'sort_by')
             ->where('status', ACTIVE)
             ->where('home', ACTIVE)
             ->whereNull('deleted_at')
@@ -221,7 +221,7 @@ class SiteController extends Controller
                 if($total > 0) {
                     //auto meta tag for seo
                     if(empty($type->meta_title)) {
-                        $type->meta_title = $type->name.' | Tổng hợp gameoffline cũ mới kinh điển hay nhất tại GAMEOFFLINEHAY.COM';
+                        $type->meta_title = $type->name.' | Tổng hợp gameoffline cũ và mới kinh điển hay nhất tại GAMEOFFLINEHAY.COM';
                     }
                     if(empty($type->meta_keyword)) {
                         $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
@@ -287,7 +287,7 @@ class SiteController extends Controller
                 $game->meta_keyword = $game->name.', game '.$game->name.', tai game '.$game->name.', tai game offline'.$game->name.', game '.$game->name.' offline';
             }
             if(empty($game->meta_description)) {
-                $game->meta_description = 'Game '.$game->name.' cực hay. Tai game '.$game->name.'. Chơi '.$typeMain->name.' '.$game->name.' để tận hưởng những giây phút tuyệt vời do game offline mang lại';
+                $game->meta_description = 'Game '.$game->name.' cực hay. Tai game '.$game->name.'. Chơi '.$typeMain->name.' '.$game->name.' để tận hưởng những giây phút tuyệt vời mà game offline mang lại';
             }
             //ad preroll
             if($device == PC) {
@@ -444,7 +444,7 @@ class SiteController extends Controller
     private function getGameTypeByParentIdQuery($id)
     {
         return DB::table('game_types')
-            ->select('id', 'name', 'slug', 'image', 'type', 'grid')
+            ->select('id', 'name', 'slug', 'summary', 'image', 'type', 'grid')
             ->where('status', ACTIVE)
             ->where('parent_id', $id)
             ->whereNull('deleted_at')
@@ -454,7 +454,7 @@ class SiteController extends Controller
     private function getGameTypeById($id)
     {
         return DB::table('game_types')
-            ->select('id', 'name', 'slug', 'parent_id', 'type', 'grid')
+            ->select('id', 'name', 'slug', 'summary', 'parent_id', 'type', 'grid')
             ->where('id', $id)
             ->where('status', ACTIVE)
             ->whereNull('deleted_at')
