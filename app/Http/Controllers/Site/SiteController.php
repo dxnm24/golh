@@ -414,7 +414,7 @@ class SiteController extends Controller
         $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/i', '-', $slug));
         $data = DB::table('games')->where('status', ACTIVE);
         if($device == MOBILE) {
-            $data = $data->where('type', GAMEHTML5);
+            $data = $data->where('type', '!=', GAMEFLASH);
         }
         $data = $data->where('start_date', '<=', date('Y-m-d H:i:s'))
             ->where('slug', 'like', '%'.$slug.'%')
@@ -449,12 +449,12 @@ class SiteController extends Controller
     {
         $data = DB::table('games')
             ->join('game_type_relations', 'games.id', '=', 'game_type_relations.game_id')
-            ->select('games.id', 'games.name', 'games.slug', 'games.image')
+            ->select('games.id', 'games.name', 'games.slug', 'games.image', 'games.summary', 'games.type')
             ->where('game_type_relations.type_id', $id)
             ->where('games.status', ACTIVE);
         $device = getDevice();
         if($device == MOBILE) {
-            $data = $data->where('games.type', GAMEHTML5);
+            $data = $data->where('games.type', '!=', GAMEFLASH);
         }
         $data = $data->where('games.start_date', '<=', date('Y-m-d H:i:s'))
             ->whereNotIn('game_type_relations.game_id', $ids)
@@ -498,12 +498,12 @@ class SiteController extends Controller
     private function getGameByTypeQuery($id, $orderColumn = 'start_date', $orderSort = 'desc')
     {
         $data = DB::table('games')
-            ->select('id', 'name', 'slug', 'image')
+            ->select('id', 'name', 'slug', 'image', 'summary', 'type')
             ->where('type_main_id', $id)
             ->where('status', ACTIVE);
         $device = getDevice();
         if($device == MOBILE) {
-            $data = $data->where('type', GAMEHTML5);
+            $data = $data->where('type', '!=', GAMEFLASH);
         }
         $data = $data->where('start_date', '<=', date('Y-m-d H:i:s'))
             ->whereNull('deleted_at')
@@ -515,12 +515,12 @@ class SiteController extends Controller
         $data = DB::table('games')
             ->join('game_'.$element.'_relations', 'games.id', '=', 'game_'.$element.'_relations.game_id')
             // ->join('game_'.$element.'s', 'game_'.$element.'_relations.'.$element.'_id', '=', 'game_'.$element.'s.id')
-            ->select('games.id', 'games.name', 'games.slug', 'games.image')
+            ->select('games.id', 'games.name', 'games.slug', 'games.image', 'games.summary', 'games.type')
             ->where('game_'.$element.'_relations.'.$element.'_id', $id)
             ->where('games.status', ACTIVE);
         $device = getDevice();
         if($device == MOBILE) {
-            $data = $data->where('games.type', GAMEHTML5);
+            $data = $data->where('games.type', '!=', GAMEFLASH);
         }
         $data = $data->where('games.start_date', '<=', date('Y-m-d H:i:s'))
             ->whereNull('games.deleted_at')
