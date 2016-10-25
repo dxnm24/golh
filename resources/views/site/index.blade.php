@@ -32,13 +32,13 @@
 			<div class="box">
 				<div class="row column box-title">
 					<h3>{!! $value->name !!}</h3>
-					<a href="{{ $url }}" class="btn-seemore float-right hide-for-small-only"><span>Xem thêm</span></a>
+					<a href="{{ $url }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
 				</div>
 				<div class="box-inner">
 				@include('site.game.box', array('data' => $value->games, 'type' => $value))
 				</div>
 				<div class="row column show-for-small-only box-seemore">
-					<a href="{{ $url }}" class="btn-seemore">Xem thêm<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+					<a href="{{ $url }}" class="btn-seemore">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 				</div>
 			</div>
 			@else
@@ -57,12 +57,12 @@
 				</ul>
 				<div class="box-inner" data-tabs-content="box-tabs-{{ $value->id }}">
 					<div class="tabs-panel" id="{{ $value->slug.'-offline-hay-nhat' }}">
-						<a href="{{ $urlBest }}" class="btn-seemore float-right hide-for-small-only"><span>Xem thêm</span></a>
+						<a href="{{ $urlBest }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
 						<div class="clearfix"></div>
 						@include('site.game.box', array('data' => $value->games2))
 					</div>
 					<div class="tabs-panel is-active" id="{{ $value->slug.'-offline-moi-nhat' }}">
-						<a href="{{ $urlLatest }}" class="btn-seemore float-right hide-for-small-only"><span>Xem thêm</span></a>
+						<a href="{{ $urlLatest }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
 						<div class="clearfix"></div>
 						@include('site.game.box', array('data' => $value->games))
 					</div>
@@ -70,7 +70,7 @@
 				<div class="row column show-for-small-only box-seemore">
 					<a href="{{ $urlBest }}" class="btn-seemore">Xem {!! $value->name !!} offline hay nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 					<a href="{{ $urlLatest }}" class="btn-seemore">Xem {!! $value->name !!} offline mới nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
-					<a href="{{ $url }}" class="btn-seemore">Xem thêm<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+					<a href="{{ $url }}" class="btn-seemore">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 				</div>
 			</div>
 			@endif
