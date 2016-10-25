@@ -17,17 +17,17 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="column">
-			<div class="mobile-search">
-				<form action="{{ route('site.search') }}" method="GET" class="search-form">
-					<input name="name" type="text" value="" class="search-input" placeholder="Tìm kiếm">
-					<a class="search-button" onclick="$('.search-form').submit()"><i class="fa fa-search" aria-hidden="true"></i></a>
-				</form>
-			</div>
+</header>
+<div class="row">
+	<div class="column">
+		<div class="mobile-search">
+			<form action="{{ route('site.search') }}" method="GET" class="search-form">
+				<input name="name" type="text" value="" class="search-input" placeholder="Tìm kiếm">
+				<a class="search-button" onclick="$('.search-form').submit()"><i class="fa fa-search" aria-hidden="true"></i></a>
+			</form>
 		</div>
 	</div>
-</header>
+</div>
 <div class="full reveal mobile-menubox" id="mobile-menubox" data-reveal>
 	<div class="mobile-menubox-head">
 		<strong class="mobile-title mmh-left">Danh mục</strong>
