@@ -228,7 +228,33 @@ header {
 	margin-top: 0.625rem;
 	margin-bottom: 0.625rem;
 }
-.search-form {
+form.search-form {
+	position: relative;
+	width: 100%;
+	margin-top: 1.875rem;
+	input.search-input {
+		position: relative;
+		margin-bottom: 0;
+		padding-right: 8.750rem;
+		border-radius: 0.438rem;
+		font-size: 0.875rem;
+	}
+	a.search-button {
+		background-color: #1993c6;
+		border: none;
+		position: absolute;
+		right: 0;
+		top: 0;
+		padding: 0.563rem;
+		height: 2.375rem;
+		text-decoration: none;
+		color: #fff;
+		border-radius: 0 0.438rem 0.438rem 0;
+	}
+	a.search-button:hover,
+	a.search-button:focus {
+		color: #fff;
+	}
 	.input-group {
 		margin: 0;
 	}
@@ -978,7 +1004,7 @@ ul.mobile-menu {
 }
 .logo > a {
 	> span {
-		font-size: 1.50rem;
+		font-size: 1.250rem;
 		font-weight: bold;
 	}
 	> span.logo-color-1 {
@@ -1004,7 +1030,13 @@ ul.mobile-menu {
 // RESPONSIVE
 /* Small only */
 @media screen and (max-width: 39.9375em) {
-	
+	form.search-form {
+		width: auto;
+		margin-top: 1rem;
+	}
+	a.search-button {
+		padding: 0.5rem 1rem;
+	}
 }
 /* Medium and up */
 @media screen and (min-width: 40em) {
