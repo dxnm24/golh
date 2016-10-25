@@ -66,11 +66,21 @@
 		<div class="gameinfo">
 			<div class="info">
 				<div class="row">
-					<div class="column description">{!! $game->description !!}</div>
-					<div class="column description">{!! $game->download !!}</div>
+					<div class="medium-2 small-3 columns"><img src="{{ url($game->image) }}" alt="{!! $game->name !!}" class="info-avatar" /></div>
+					<div class="medium-10 small-9 columns">
+						<p class="summary">{!! $game->summary !!}</p>
+						<p class="view"><span>View:</span> {{ number_format(getZero($game->view, 0, '.', '.')) }}</p>
+						@if($device == PC)
+							@include('site.common.social')
+						@endif
+					</div>
+					@if($device == MOBILE)
 					<div class="column center">
 						@include('site.common.social')
 					</div>
+					@endif
+					<div class="column description">{!! $game->description !!}</div>
+					<div class="column description">{!! $game->download !!}</div>
 				</div>
 			</div>
 			
