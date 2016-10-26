@@ -12,6 +12,7 @@
 	function tiny_mce()
 	{
 	    tinymce.init({
+	    	entity_encoding : "raw", // TinyMCE UTF-8 saving to MySQL Database
 	        selector: "textarea.elm1",
 	        theme: "modern",
 	        width: 700,
