@@ -114,6 +114,18 @@ class SiteController extends Controller
         if(isset($tag)) {
             $data = $this->getGameByRelationsQuery('tag', $tag->id)->paginate(PAGINATE);
             if($data->total() > 0) {
+                //auto meta tag for seo
+                if(empty($tag->meta_title)) {
+                    $tag->meta_title = $tag->name.' offline | Tổng hợp gameoffline cũ mới kinh điển tại gameofflinehay.com';
+                }
+                if(empty($tag->meta_keyword)) {
+                    $tagNameNoLatin = CommonMethod::convert_string_vi_to_en($tag->name);
+                    $tag->meta_keyword = $tagNameNoLatin.', '.$tag->name.', '.$tagNameNoLatin.' offline, '.$tag->name.' offline, '.$tagNameNoLatin.'offline hay, '.$tag->name.' offline hay'.', tai '.$tagNameNoLatin.' offline, tải '.$tag->name.' offline, download'.$tagNameNoLatin.' offline, download '.$tag->name.' offline';
+                }
+                if(empty($tag->meta_description)) {
+                    $tagNameNoLatin = CommonMethod::convert_string_vi_to_en($tag->name);
+                    $tag->meta_description = 'Tai '.$tagNameNoLatin.' offline cho pc, laptop. Download '.$tagNameNoLatin.' offline hay nhất từ danh sách '.$tag->name.' tại gameofflinehay.com';
+                }
                 //put cache
                 $html = view('site.game.tag', ['data' => $data, 'tag' => $tag])->render();
                 Cache::forever($cacheName, $html);
@@ -181,7 +193,7 @@ class SiteController extends Controller
             if($total > 0) {
                 //auto meta tag for seo
                 if(empty($type->meta_title)) {
-                    $type->meta_title = $type->name.' offline | Tổng hợp gameoffline cũ mới kinh điển hay nhất tại GAMEOFFLINEHAY.COM';
+                    $type->meta_title = $type->name.' offline | Tổng hợp gameoffline cũ mới kinh điển tại gameofflinehay.com';
                 }
                 if(empty($type->meta_keyword)) {
                     $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
@@ -189,7 +201,7 @@ class SiteController extends Controller
                 }
                 if(empty($type->meta_description)) {
                     $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
-                    $type->meta_description = 'Tai '.$typeNameNoLatin.' offline cho pc, laptop. Download '.$typeNameNoLatin.' offline hay nhất từ danh sách '.$type->name.' hay nhất tại GAMEOFFLINEHAY.COM';
+                    $type->meta_description = 'Tai '.$typeNameNoLatin.' offline cho pc, laptop. Download '.$typeNameNoLatin.' offline hay nhất từ danh sách '.$type->name.' tại gameofflinehay.com';
                 }
                 //put cache
                 $html = view('site.game.type', ['data' => $data, 'type' => $type, 'total' => $total, 'paginate' => $paginate])->render();
@@ -229,7 +241,7 @@ class SiteController extends Controller
                 if($total > 0) {
                     //auto meta tag for seo
                     if(empty($type->meta_title)) {
-                        $type->meta_title = $type->name.' | Tổng hợp gameoffline cũ và mới kinh điển hay nhất tại GAMEOFFLINEHAY.COM';
+                        $type->meta_title = $type->name.' | Tổng hợp gameoffline cũ và mới kinh điển tại gameofflinehay.com';
                     }
                     if(empty($type->meta_keyword)) {
                         $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
@@ -237,7 +249,7 @@ class SiteController extends Controller
                     }
                     if(empty($type->meta_description)) {
                         $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
-                        $type->meta_description = 'Tai '.$typeNameNoLatin.' cho pc, laptop, máy cấu hình yếu. Download '.$typeNameNoLatin.' từ danh sách '.$type->name.' tổng hợp tại GAMEOFFLINEHAY.COM';
+                        $type->meta_description = 'Tai '.$typeNameNoLatin.' cho pc, laptop, máy cấu hình yếu. Download '.$typeNameNoLatin.' từ danh sách '.$type->name.' tổng hợp tại gameofflinehay.com';
                     }
                     //put cache
                     $html = view('site.game.type', ['data' => $data, 'type' => $type, 'total' => $total, 'paginate' => $paginate, 'isHotOrNew' => $isHotOrNew])->render();
@@ -289,7 +301,7 @@ class SiteController extends Controller
             }
             //auto meta tag for seo
             if(empty($game->meta_title)) {
-                $game->meta_title = $game->name.' | tải game '.$game->name.' tại GAMEOFFLINEHAY.COM';
+                $game->meta_title = $game->name.' | tải game '.$game->name.' tại gameofflinehay.com';
             }
             if(empty($game->meta_keyword)) {
                 $game->meta_keyword = $game->name.', game '.$game->name.', tai game '.$game->name.', tai game offline'.$game->name.', game '.$game->name.' offline';
