@@ -1,20 +1,35 @@
 <IfModule mod_rewrite.c>
-	<IfModule mod_negotiation.c>
-		#Options -MultiViews
+    <IfModule mod_negotiation.c>
+        #Options -MultiViews
         Options All -Indexes
-	</IfModule>
+    </IfModule>
 
-	RewriteEngine On
+    RewriteEngine On
 
-	# redirect from www to non-www.*
-	RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-	RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,QSA,NC,L]
+    # Force SSL on checkout login account and admin pages
+    RewriteCond %{HTTPS} off
+    RewriteCond %{REQUEST_URI} admin|favicon.ico
+    RewriteCond %{HTTP_HOST} ^(www\.)?(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%2/$1 [R=301,L,QSA]
 
-	# Redirect Trailing Slashes If Not A Folder...
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.*)/$ /$1 [L,R=301]
+    # Remove SSL on other pages
+    RewriteCond %{HTTPS} on
+    RewriteCond %{REQUEST_URI} !admin|favicon.ico
+    RewriteCond %{HTTP_HOST} ^(www\.)?(.*)$ [NC]
+    RewriteRule ^(.*)$ http://%2/$1 [R=301,L,QSA]
 
-	# Removes index.php from ExpressionEngine URLs
+    # redirect from www to non-www.*
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,QSA,NC,L]
+    
+    RewriteCond %{HTTP_HOST} ^www.%{HTTP_HOST}
+    RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI}/$1 [R=301,QSA,NC,L]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Removes index.php from ExpressionEngine URLs
     RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
     RewriteCond %{REQUEST_URI} !/system/.* [NC]
     RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
@@ -24,9 +39,9 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ /index.php/$1 [L]
 
-	# Handle Authorization Header
-	RewriteCond %{HTTP:Authorization} .
-	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
 
 # Enable Compression
