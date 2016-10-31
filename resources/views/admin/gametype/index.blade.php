@@ -33,17 +33,27 @@
 						<th style="width:240px;">Action</th>
 					</tr>
 					@foreach($data as $key => $value)
+					<?php 
+			            if($value->parent_id > 0) {
+			                $parentSlug = CommonQuery::getFieldById('game_types', $value->parent_id, 'slug');
+			                // $gameTypeUrl = url($parentSlug.'/'.$value->slug);
+			                $gameTypeUrl = CommonUrl::getUrl2($parentSlug, $value->slug, 1);
+			            } else {
+			                // $gameTypeUrl = url($value->slug);
+			                $gameTypeUrl = CommonUrl::getUrl($value->slug, 1);
+			            }
+			        ?>
 					<tr>
 						<td><input type="checkbox" class="id" name="id[]" value="{{ $value->id }}"></td>
 						<td>{{ $value->name }}</td>
-						<td>{{ CommonUrl::getUrl($value->slug, 1) }}</td>
+						<td>{{ $gameTypeUrl }}</td>
 						<td>{{ CommonQuery::getFieldById('game_types', $value->parent_id, 'name') }}</td>
 						<td>{!! CommonOption::getStatus($value->home) !!}</td>
 						<td>{!! CommonOption::getStatus($value->type) !!}</td>
 						<td>{!! CommonOption::getStatus($value->status) !!}</td>
 						<td><input type="text" name="position" value="{{ $value->position }}" size="5" class="onlyNumber" style="text-align: center;"></td>
 						<td>
-							<a href="{{ CommonUrl::getUrl($value->slug) }}" class="btn btn-success" target="_blank">Xem</a>
+							<a href="{{ $gameTypeUrl }}" class="btn btn-success" target="_blank">Xem</a>
 							<a href="{{ route('admin.gametype.edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 							<form method="POST" action="{{ route('admin.gametype.destroy', $value->id) }}" style="display: inline-block;">
 								{{ method_field('DELETE') }}
