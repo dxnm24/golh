@@ -36,10 +36,8 @@
 					<?php 
 			            if($value->parent_id > 0) {
 			                $parentSlug = CommonQuery::getFieldById('game_types', $value->parent_id, 'slug');
-			                // $gameTypeUrl = url($parentSlug.'/'.$value->slug);
 			                $gameTypeUrl = CommonUrl::getUrl2($parentSlug, $value->slug, 1);
 			            } else {
-			                // $gameTypeUrl = url($value->slug);
 			                $gameTypeUrl = CommonUrl::getUrl($value->slug, 1);
 			            }
 			        ?>
