@@ -28,6 +28,7 @@
 
 	<meta property="fb:app_id" content="{!! FACEBOOK_APPID !!}" />
 	<link rel="shortcut icon" href="{!! url('img/favicon.png') !!}" type="image/x-icon">
+	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<title>@yield('title')</title>
 	{!! GA !!}
 </head>

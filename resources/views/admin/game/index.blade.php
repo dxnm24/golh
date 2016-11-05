@@ -37,7 +37,7 @@
 						<td>{{ CommonOption::getTypeGame($value->type) }}</td>
 						<td>{{ getZero($value->view) }}</td>
 						<td>{!! CommonMethod::startDateLabel($value->start_date) !!}</td>
-						<td>{!! CommonOption::getStatus($value->status) !!}</td>
+						<td><a id="status_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'status')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->status) !!}</a></td>
 						<td>
 							<a href="{{ CommonUrl::getUrl($value->slug) }}" class="btn btn-success" target="_blank">Xem</a>
 							<a href="{{ route('admin.game.edit', $value->id) }}" class="btn btn-primary">Sửa</a>
@@ -55,5 +55,7 @@
 		{!! $data->appends($request->except('page'))->render() !!}
 	</div>
 </div>
+
+@include('admin.game.script')
 
 @stop

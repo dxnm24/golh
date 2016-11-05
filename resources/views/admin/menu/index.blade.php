@@ -34,7 +34,7 @@
 						<td>{{ $value->name }}</td>
 						<td>{{ $value->url }}</td>
 						<td>{{ CommonOption::getMenuType($value->type) }}</td>
-						<td>{!! CommonOption::getStatus($value->status) !!}</td>
+						<td><a id="status_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'status')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->status) !!}</a></td>
 						<td><input type="text" name="position" value="{{ $value->position }}" size="5" class="onlyNumber" style="text-align: center;"></td>
 						<td>
 							<a href="{{ route('admin.menu.edit', $value->id) }}" class="btn btn-primary">Sửa</a>

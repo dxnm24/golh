@@ -252,4 +252,20 @@ class GameController extends Controller
         return redirect()->route('admin.game.index')->with('success', 'Xóa thành công');   
     }
 
+    public function updateStatus(Request $request)
+    {
+        $id = $request->id;
+        $field = $request->field;
+        if($id) {
+            $data = Game::find($id);    
+            if(count($data) > 0) {
+                $status = ($data->$field == ACTIVE)?INACTIVE:ACTIVE;
+                $data->update([$field=>$status]);
+                Cache::flush();
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }

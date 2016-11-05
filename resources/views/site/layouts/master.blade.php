@@ -1,8 +1,6 @@
 @include('site.common.head')
 <body>
 
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
 @if(isset($isPlay) && $isPlay == true)
 <script>
   window.fbAsyncInit = function() {

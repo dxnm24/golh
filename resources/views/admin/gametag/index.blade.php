@@ -30,7 +30,7 @@
 					<tr>
 						<td>{{ $value->name }}</td>
 						<td>{{ CommonUrl::getUrlGameTag($value->slug, 1) }}</td>
-						<td>{!! CommonOption::getStatus($value->status) !!}</td>
+						<td><a id="status_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'status')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->status) !!}</a></td>
 						<td>
 							<a href="{{ CommonUrl::getUrlGameTag($value->slug) }}" class="btn btn-success" target="_blank">Xem</a>
 							<a href="{{ route('admin.gametag.edit', $value->id) }}" class="btn btn-primary">Sửa</a>
@@ -48,5 +48,7 @@
 		{{ $data->links() }}
 	</div>
 </div>
+
+@include('admin.gametag.script')
 
 @stop

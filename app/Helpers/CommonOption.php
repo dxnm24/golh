@@ -12,7 +12,7 @@ class CommonOption
     {
     	$array = self::statusArray();
         if($status == ACTIVE) {
-            return $array[$status];
+            return '<span style="color: green;">'.$array[$status].'</span>';
         } else {
             return '<span style="color: red;">'.$array[$status].'</span>';
         }

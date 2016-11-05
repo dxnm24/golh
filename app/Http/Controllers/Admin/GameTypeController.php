@@ -219,4 +219,20 @@ class GameTypeController extends Controller
         return 1;
     }
 
+    public function updateStatus(Request $request)
+    {
+        $id = $request->id;
+        $field = $request->field;
+        if($id) {
+            $data = GameType::find($id);    
+            if(count($data) > 0) {
+                $status = ($data->$field == ACTIVE)?INACTIVE:ACTIVE;
+                $data->update([$field=>$status]);
+                Cache::flush();
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }

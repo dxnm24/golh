@@ -129,4 +129,20 @@ class AdController extends Controller
         return redirect()->route('admin.ad.index')->with('success', 'Xóa thành công');   
     }
 
+    public function updateStatus(Request $request)
+    {
+        $id = $request->id;
+        $field = $request->field;
+        if($id) {
+            $data = Ad::find($id);    
+            if(count($data) > 0) {
+                $status = ($data->$field == ACTIVE)?INACTIVE:ACTIVE;
+                $data->update([$field=>$status]);
+                Cache::flush();
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }

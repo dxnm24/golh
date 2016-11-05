@@ -7,17 +7,22 @@ Route::group(['middleware' => ['auth:admin']], function ($router) {
     Route::post('account/{id}/password', ['uses' => 'AccountController@doPassword', 'as' => 'admin.account.password']);
     Route::resource('account', 'AccountController');
     //menu
+    Route::post('menu/updateStatus', 'MenuController@updateStatus');
     Route::post('menu/callupdate', 'MenuController@callupdate');
     Route::resource('menu', 'MenuController');
     //game tag
+    Route::post('gametag/updateStatus', 'GameTagController@updateStatus');
     Route::resource('gametag', 'GameTagController');
     //game type
+    Route::post('gametype/updateStatus', 'GameTypeController@updateStatus');
     Route::post('gametype/callupdate', 'GameTypeController@callupdate');
     Route::resource('gametype', 'GameTypeController');
     //game
+    Route::post('game/updateStatus', 'GameController@updateStatus');
     Route::get('game/search', ['uses' => 'GameController@search', 'as' => 'admin.game.search']);
     Route::resource('game', 'GameController');
     //ads
+    Route::post('ad/updateStatus', 'AdController@updateStatus');
     Route::resource('ad', 'AdController');
     //config
     Route::resource('config', 'ConfigController');

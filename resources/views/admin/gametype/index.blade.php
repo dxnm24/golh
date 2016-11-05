@@ -46,9 +46,9 @@
 						<td>{{ $value->name }}</td>
 						<td>{{ $gameTypeUrl }}</td>
 						<td>{{ CommonQuery::getFieldById('game_types', $value->parent_id, 'name') }}</td>
-						<td>{!! CommonOption::getStatus($value->home) !!}</td>
-						<td>{!! CommonOption::getStatus($value->type) !!}</td>
-						<td>{!! CommonOption::getStatus($value->status) !!}</td>
+						<td><a id="home_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'home')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->home) !!}</a></td>
+						<td><a id="type_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'type')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->type) !!}</a></td>
+						<td><a id="status_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'status')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->status) !!}</a></td>
 						<td><input type="text" name="position" value="{{ $value->position }}" size="5" class="onlyNumber" style="text-align: center;"></td>
 						<td>
 							<a href="{{ $gameTypeUrl }}" class="btn btn-success" target="_blank">Xem</a>

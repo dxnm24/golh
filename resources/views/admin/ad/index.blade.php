@@ -28,7 +28,7 @@
 					<tr>
 						<td>{{ $value->name }}</td>
 						<td>{{ CommonOption::getAdPosition($value->position) }}</td>
-						<td>{!! CommonOption::getStatus($value->status) !!}</td>
+						<td><a id="status_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'status')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->status) !!}</a></td>
 						<td>
 							<a href="{{ route('admin.ad.edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 							<form method="POST" action="{{ route('admin.ad.destroy', $value->id) }}" style="display: inline-block;">
@@ -45,5 +45,7 @@
 		{{ $data->links() }}
 	</div>
 </div>
+
+@include('admin.ad.script')
 
 @stop
