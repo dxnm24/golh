@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GameType extends Model
 {
-	use SoftDeletes;
     protected $fillable = [
         'name', 'slug', 'parent_id', 'level', 'position', 'summary', 'description', 'image', 'meta_title', 'meta_keyword', 'meta_description', 'meta_image', 'limited', 'sort_by', 'home', 'type', 'grid', 'status', 'lang',
     ];

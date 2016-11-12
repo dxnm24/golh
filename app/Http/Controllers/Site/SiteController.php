@@ -29,7 +29,6 @@ class SiteController extends Controller
             ->select('id', 'name', 'slug', 'summary', 'type', 'limited', 'sort_by')
             ->where('status', ACTIVE)
             ->where('home', ACTIVE)
-            ->whereNull('deleted_at')
             ->orderByRaw(DB::raw("position = '0', position"))
             ->orderBy('name', 'asc')
             ->get();
@@ -481,7 +480,6 @@ class SiteController extends Controller
             ->select('id', 'name', 'slug', 'summary', 'image', 'type', 'grid')
             ->where('status', ACTIVE)
             ->where('parent_id', $id)
-            ->whereNull('deleted_at')
             ->orderByRaw(DB::raw("position = '0', position"))
             ->orderBy('name', 'asc');
     }
@@ -491,7 +489,6 @@ class SiteController extends Controller
             ->select('id', 'name', 'slug', 'summary', 'parent_id', 'type', 'grid')
             ->where('id', $id)
             ->where('status', ACTIVE)
-            ->whereNull('deleted_at')
             ->first();
     }
     private function getGameTypeBySlug($slug, $hasParentId = null)
@@ -505,7 +502,7 @@ class SiteController extends Controller
         } else {
             $result = $result->where('parent_id', 0);
         }
-        return $result->whereNull('deleted_at')->first();
+        return $result->first();
     }
     private function getGameByTypeQuery($id, $orderColumn = 'start_date', $orderSort = 'desc')
     {

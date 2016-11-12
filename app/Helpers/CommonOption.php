@@ -86,6 +86,10 @@ class CommonOption
             4 => 'Footer - Mobile',
             5 => 'Preroll - PC',
             6 => 'Preroll - Mobile',
+            7 => 'Sidebar Top - PC',
+            8 => 'Sidebar Top- Mobile',
+            9 => 'Sidebar Bottom - PC',
+            10 => 'Sidebar Bottom - Mobile',
             
         );
     }

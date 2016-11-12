@@ -9,7 +9,7 @@ class CommonQuery
     {
         $data = DB::table($table)->where('status', $status);
         //if has softdelete
-        if(in_array($table, ['games', 'game_types'])) {
+        if(in_array($table, ['games'])) {
             $data = $data->whereNull('deleted_at');
         }
         if($orderByPosition != null) {
@@ -26,7 +26,7 @@ class CommonQuery
     {
         $data = DB::table($table)->where('status', $status);
         //if has softdelete
-        if(in_array($table, ['games', 'game_types'])) {
+        if(in_array($table, ['games'])) {
             $data = $data->whereNull('deleted_at');
         }
         $data = $data->pluck('name', 'id');
@@ -39,7 +39,7 @@ class CommonQuery
     {
         $data = DB::table($table)->where('id', $id);
         //if has softdelete
-        if(in_array($table, ['games', 'game_types'])) {
+        if(in_array($table, ['games'])) {
             $data = $data->whereNull('deleted_at');
         }
         $data = $data->first();
@@ -73,7 +73,7 @@ class CommonQuery
             ->where('parent_id', 0)
             ->where('id', '!=', $currentId);
         //if has softdelete
-        if(in_array($table, ['games', 'game_types'])) {
+        if(in_array($table, ['games'])) {
             $data = $data->whereNull('deleted_at');
         }
         $data = $data->pluck('name', 'id');
@@ -87,7 +87,7 @@ class CommonQuery
             ->where('status', ACTIVE)
             ->where('id', '!=', $currentId);
         //if has softdelete
-        if(in_array($table, ['games', 'game_types'])) {
+        if(in_array($table, ['games'])) {
             $data = $data->whereNull('deleted_at');
         }
         $data = $data->get();

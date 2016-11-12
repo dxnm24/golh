@@ -47,7 +47,6 @@ class GameTypeController extends Controller
                 $query = $query->where('status', $request->status);
             }
         })
-        ->whereNull('deleted_at')
         ->orderBy('name', 'asc')
         ->paginate(PAGINATION);
         return $data;
@@ -195,7 +194,6 @@ class GameTypeController extends Controller
     {
         $games = Game::where('type_main_id', $id)
             ->orWhere('seri', $id)
-            ->whereNull('deleted_at')
             ->first();
         if(isset($games)) {
             return redirect()->route('admin.gametype.index')->with('warning', 'Không thể xóa vì có game trong thể loại này!'); 

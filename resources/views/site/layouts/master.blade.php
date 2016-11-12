@@ -30,7 +30,9 @@
 		</div>
 	</div>
 	<div class="medium-4 columns">
+    @include('site.common.ad', ['posPc' => 7, 'posMobile' => 8])
 		@include('site.common.side')
+    @include('site.common.ad', ['posPc' => 9, 'posMobile' => 10])
 	</div>
 </div>
 @include('site.common.ad', ['posPc' => 3, 'posMobile' => 4])
