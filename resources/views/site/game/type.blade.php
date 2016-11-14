@@ -27,6 +27,8 @@
 			'meta_keyword' => $meta_keyword,
 			'meta_description' => $meta_description,
 			'meta_image' => $meta_image,
+			'pagePrev' => isset($data)?$data->previousPageUrl():null,
+			'pageNext' => isset($data)?$data->nextPageUrl():null
 		);
 ?>
 @extends('site.layouts.master', $extendData)

@@ -14,7 +14,6 @@
 	<meta name="title" content="{!! $meta_title !!}">
 	<meta name="keywords" content="{!! $meta_keyword !!}">
 	<meta name="description" content="{!! $meta_description !!}">
-	
 	<meta property="og:url" content="{!! url()->current() !!}" />
 	<meta property="og:title" content="{!! $meta_title !!}" />
 	<meta property="og:description" content="{!! $meta_description !!}" />
@@ -25,9 +24,15 @@
 	@if(isset($isPlay))
 	<meta property="og:type" content="article" />
 	@endif
-
 	<meta property="fb:app_id" content="{!! FACEBOOK_APPID !!}" />
 	<link rel="shortcut icon" href="{!! url('img/favicon.png') !!}" type="image/x-icon">
+	<link rel="alternate" hreflang="vi" href="{!! env('APP_URL', 'http://gameofflinehay.com') !!}" />
+	@if(isset($pagePrev))
+	<link rel="prev" href="{!! $pagePrev !!}">
+	@endif
+	@if(isset($pageNext))
+	<link rel="next" href="{!! $pageNext !!}">
+	@endif
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<title>@yield('title')</title>
 	{!! GA !!}

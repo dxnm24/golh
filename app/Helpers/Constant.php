@@ -57,3 +57,4 @@ define('GA', "");
 // default game frame
 define('FRAME_WIDTH', '770');
 define('FRAME_HEIGHT', '510');
+define('DOMAINSITE', 'http://gameofflinehay.com');
