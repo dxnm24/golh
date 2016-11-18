@@ -1,6 +1,6 @@
 <?php 
-	// if(isset($data[0]->seri) && $data[0]->seri == ACTIVE) {
-	if(isset($data->seri) && $data->seri == ACTIVE) {
+	if(isset($data[0]->seri) && $data[0]->seri == ACTIVE) {
+	// if(isset($data->seri) && $data->seri == ACTIVE) {
 		$checkSeri = true;
 		$seriClass = ' class=seri';
 		$url0 = url($type->slug.'/'.$data[0]->slug);
@@ -30,8 +30,8 @@
 <div class="row small-up-2 medium-up-4 large-up-5">
 	@foreach($data as $key => $value)
 	<?php 
-		// if(isset($value->seri) && $value->seri == ACTIVE) {
-		if(isset($data->seri) && $data->seri == ACTIVE) {
+		if(isset($value->seri) && $value->seri == ACTIVE) {
+		// if(isset($data->seri) && $data->seri == ACTIVE) {
 			$checkSeri = true;
 			$seriClass = ' class=seri';
 			$url = url($type->slug.'/'.$value->slug);

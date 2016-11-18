@@ -169,21 +169,23 @@ class SiteController extends Controller
             $countTypes = count($types);
             if($countTypes > 0) {
                 $paginate = null;
+                //1. hien thi toan bo type duoc danh dau la con cua type (seri) nao do (luon mo code duoi)
                 $data = collect($types);
-                // $gametypes = $this->getGameByRelationsQuery('type', $type->id)->get();
-                // $data = collect($types)->merge($gametypes);
-                //add field seri to check seri ribbon image
-                //check item
-                // $typesIds = $this->getGameTypeByParentIdQuery($type->id)->pluck('id');
-                // foreach($data as $v) {
-                //     if(in_array($v->id, $typesIds)) {
-                //         $v->seri = ACTIVE;
-                //     } else {
-                //         $v->seri = INACTIVE;
-                //     }
-                // }
-                //check box
-                $data->seri = ACTIVE;
+                //2. hien thi them game duoc danh dau the loai la type (seri). Co nghia la hien thi type (theo muc so 1. va ca game duoc danh dau type (seri)). Neu chi hien thi type trong trang seri thi dong 2 dong code duoi day va nguoc lai mo ra de hien thi ca type va game thuoc seri do.
+                $gametypes = $this->getGameByRelationsQuery('type', $type->id)->get();
+                $data = collect($types)->merge($gametypes);
+                //add field seri to check seri ribbon image (doan code duoi day cho phep check item trong trang seri la type hay game de su dung 1 image ribbon)
+                //2.1 check item (mo doan code nay khi su dung muc so 2. o tren va dong vao khi khong su dung muc so 2. o tren)
+                $typesIds = $this->getGameTypeByParentIdQuery($type->id)->pluck('id');
+                foreach($data as $v) {
+                    if(in_array($v->id, $typesIds)) {
+                        $v->seri = ACTIVE;
+                    } else {
+                        $v->seri = INACTIVE;
+                    }
+                }
+                //1.1 check box (mo ra neu khong su dung muc so 2. va dong vao khi su dung muc so 2. o tren)
+                // $data->seri = ACTIVE;
             } else {
                 $paginate = 1;
                 $data = $this->getGameByRelationsQuery('type', $type->id)->paginate($paginateNumber);
