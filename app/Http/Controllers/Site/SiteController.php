@@ -424,14 +424,12 @@ class SiteController extends Controller
         // game
         $slug = CommonMethod::convert_string_vi_to_en($request->name);
         $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/i', '-', $slug));
-        $data = DB::table('games');
+        $data = DB::table('games')->where('status', ACTIVE);
         if($device == MOBILE) {
             $data = $data->where('type', '!=', GAMEFLASH);
         }
         $data = $data->where('start_date', '<=', date('Y-m-d H:i:s'))
             ->where('slug', 'like', '%'.$slug.'%')
-            ->orWhere('name', 'like', '%'.$request->name.'%')
-            ->where('status', ACTIVE)
             ->orderBy('start_date', 'desc')
             ->paginate(PAGINATE);
         //put cache
