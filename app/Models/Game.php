@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Game extends Model
 {
-	use SoftDeletes;
 	//type: game flash or html5...
 	//url: link direct to game (play or download)
     //download: download link + notice for download

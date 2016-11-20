@@ -14,7 +14,6 @@
 	?>
 	<div class="column">
 		<div class="callout item">
-			<!-- 400x370 -->
 			<a href="{{ $url }}" title="{!! $value->name !!}"{{ $seriClass }}>
 				@if($checkSeri == true)
 				<span><img alt="{!! $value->name !!}" title="{!! $value->name !!}" data-src="{{ url($value->image) }}" class="lazyload"></span>

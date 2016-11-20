@@ -39,7 +39,6 @@ class CreateGameTable extends Migration
             $table->integer('view');
             $table->integer('status')->default(ACTIVE);
             $table->string('lang')->default(VI);
-            $table->softDeletes();
             $table->timestamps();
             $table->index('slug', 'games_slug_index');
             $table->index('type_main_id', 'games_type_main_id_index');

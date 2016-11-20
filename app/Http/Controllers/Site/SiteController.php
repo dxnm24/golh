@@ -58,18 +58,18 @@ class SiteController extends Controller
                     $value->games = collect($types)->merge($gametypes);
                     // $value->games2 = collect($types)->merge($gametypes_sortbyview);
                     $value->games2 = [];
-                    //add field seri to check seri ribbon image
-                    //check item: check tung item la game hay seri (the loai)
-                    // $typesIds = $this->getGameTypeByParentIdQuery($value->id)->take($typeLimit)->pluck('id');
-                    // foreach($value->games as $v) {
-                    //     if(in_array($v->id, $typesIds)) {
-                    //         $v->seri = ACTIVE;
-                    //     } else {
-                    //         $v->seri = INACTIVE;
-                    //     }
-                    // }
-                    //check box
-                    $value->games->seri = ACTIVE;
+                    //add field seri to check seri ribbon image (doan code duoi day cho phep check item trong trang seri la type hay game de su dung 1 image ribbon)
+                    //2.1. check item (mo doan code nay khi khong su dung muc so 1.1. o duoi va dong vao khi su dung muc so 1.1. o duoi)
+                    $typesIds = $this->getGameTypeByParentIdQuery($value->id)->take($typeLimit)->pluck('id');
+                    foreach($value->games as $v) {
+                        if(in_array($v->id, $typesIds)) {
+                            $v->seri = ACTIVE;
+                        } else {
+                            $v->seri = INACTIVE;
+                        }
+                    }
+                    //1.1 check box (mo ra neu khong su dung muc so 2.1. va dong vao khi su dung muc so 2.1. o tren)
+                    // $value->games->seri = ACTIVE;
                 } else {
                     if($value->type == ACTIVE) {
                         $value->games = $this->getGameByTypeQuery($value->id)->take($typeLimit)->get();
@@ -266,7 +266,6 @@ class SiteController extends Controller
             ->where('games.slug', $slug)
             ->where('games.status', ACTIVE)
             ->where('games.start_date', '<=', date('Y-m-d H:i:s'))
-            ->whereNull('games.deleted_at')
             ->first();
         if($game) {
             //list tags
@@ -425,14 +424,14 @@ class SiteController extends Controller
         // game
         $slug = CommonMethod::convert_string_vi_to_en($request->name);
         $slug = strtolower(preg_replace('/[^a-zA-Z0-9]+/i', '-', $slug));
-        $data = DB::table('games')->where('status', ACTIVE);
+        $data = DB::table('games');
         if($device == MOBILE) {
             $data = $data->where('type', '!=', GAMEFLASH);
         }
         $data = $data->where('start_date', '<=', date('Y-m-d H:i:s'))
             ->where('slug', 'like', '%'.$slug.'%')
             ->orWhere('name', 'like', '%'.$request->name.'%')
-            ->whereNull('deleted_at')
+            ->where('status', ACTIVE)
             ->orderBy('start_date', 'desc')
             ->paginate(PAGINATE);
         //put cache
@@ -471,7 +470,6 @@ class SiteController extends Controller
         }
         $data = $data->where('games.start_date', '<=', date('Y-m-d H:i:s'))
             ->whereNotIn('game_type_relations.game_id', $ids)
-            ->whereNull('games.deleted_at')
             ->orderBy('games.start_date', 'desc')
             ->take(PAGINATE_BOX);
         return $data;
@@ -517,7 +515,6 @@ class SiteController extends Controller
             $data = $data->where('type', '!=', GAMEFLASH);
         }
         $data = $data->where('start_date', '<=', date('Y-m-d H:i:s'))
-            ->whereNull('deleted_at')
             ->orderBy($orderColumn, $orderSort);
         return $data;
     }
@@ -534,7 +531,6 @@ class SiteController extends Controller
             $data = $data->where('games.type', '!=', GAMEFLASH);
         }
         $data = $data->where('games.start_date', '<=', date('Y-m-d H:i:s'))
-            ->whereNull('games.deleted_at')
             ->orderBy('games.'.$orderColumn, $orderSort);
         return $data;
     }

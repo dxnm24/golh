@@ -9,9 +9,9 @@ class CommonQuery
     {
         $data = DB::table($table)->where('status', $status);
         //if has softdelete
-        if(in_array($table, ['games'])) {
-            $data = $data->whereNull('deleted_at');
-        }
+        // if(in_array($table, ['games'])) {
+        //     $data = $data->whereNull('deleted_at');
+        // }
         if($orderByPosition != null) {
             $data = $data->orderByRaw(DB::raw("position = '0', position"))->get();
         } else {
@@ -26,9 +26,9 @@ class CommonQuery
     {
         $data = DB::table($table)->where('status', $status);
         //if has softdelete
-        if(in_array($table, ['games'])) {
-            $data = $data->whereNull('deleted_at');
-        }
+        // if(in_array($table, ['games'])) {
+        //     $data = $data->whereNull('deleted_at');
+        // }
         $data = $data->pluck('name', 'id');
         if(count($data) > 0) {
             return $data;
@@ -39,9 +39,9 @@ class CommonQuery
     {
         $data = DB::table($table)->where('id', $id);
         //if has softdelete
-        if(in_array($table, ['games'])) {
-            $data = $data->whereNull('deleted_at');
-        }
+        // if(in_array($table, ['games'])) {
+        //     $data = $data->whereNull('deleted_at');
+        // }
         $data = $data->first();
         if($data) {
             return $data->$field;
@@ -73,9 +73,9 @@ class CommonQuery
             ->where('parent_id', 0)
             ->where('id', '!=', $currentId);
         //if has softdelete
-        if(in_array($table, ['games'])) {
-            $data = $data->whereNull('deleted_at');
-        }
+        // if(in_array($table, ['games'])) {
+        //     $data = $data->whereNull('deleted_at');
+        // }
         $data = $data->pluck('name', 'id');
         $firstValue = ($currentId!=0)?0:'';
         return array_add($data, $firstValue, '-- Chọn');
@@ -87,9 +87,9 @@ class CommonQuery
             ->where('status', ACTIVE)
             ->where('id', '!=', $currentId);
         //if has softdelete
-        if(in_array($table, ['games'])) {
-            $data = $data->whereNull('deleted_at');
-        }
+        // if(in_array($table, ['games'])) {
+        //     $data = $data->whereNull('deleted_at');
+        // }
         $data = $data->get();
         $firstValue = ($currentId!=0)?0:'';
         $output = self::_visit($data);
