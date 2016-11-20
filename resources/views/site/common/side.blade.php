@@ -47,7 +47,7 @@
 @endif
 @if($tagmenu)
 <div class="side">
-	<h3>Từ khóa</h3>
+	<h3>Thể loại</h3>
 	<ul class="tagmenu">
 		@foreach($tagmenu as $key => $value)
 		<li><h2><a href="{{ url($value->url) }}" title="{!! $value->name !!}">{!! $value->name !!}</a></h2></li>
