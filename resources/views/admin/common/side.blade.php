@@ -10,6 +10,8 @@
             <li><a href="{{ route('admin.gametype.create') }}"><i class="fa fa-plus"></i> <span>Thêm thể loại games</span></a></li>
             <li><a href="{{ route('admin.gametag.index') }}"><i class="fa fa-tags"></i> <span>Danh sách tags games</span></a></li>
             <li><a href="{{ route('admin.gametag.create') }}"><i class="fa fa-plus"></i> <span>Thêm tags games</span></a></li>
+            <li><a href="{{ route('admin.page.index') }}"><i class="fa fa-list"></i> <span>Danh sách trang đơn</span></a></li>
+            <li><a href="{{ route('admin.page.create') }}"><i class="fa fa-plus"></i> <span>Thêm trang đơn</span></a></li>
             <li><a href="{{ route('admin.ad.index') }}"><i class="fa fa-picture-o"></i> <span>Danh sách quảng cáo</span></a></li>
             <li><a href="{{ route('admin.ad.create') }}"><i class="fa fa-plus"></i> <span>Thêm quảng cáo</span></a></li>
             <li class="header">CONFIG</li>

@@ -178,7 +178,7 @@ class GameTagController extends Controller
         GameTagRelation::where('tag_id', $id)->delete();
         $data->delete();
         Cache::flush();
-        return redirect()->route('admin.gametag.index')->with('success', 'Xóa thành công');   
+        return redirect()->route('admin.gametag.index')->with('success', 'Xóa thành công');
     }
 
     public function updateStatus(Request $request)
