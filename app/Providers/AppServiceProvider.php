@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //head tag code
+        view()->share('scriptcode', self::getCode());
+        //all menu
         view()->share('topmenu', self::getMenu());
         // self::getMenus(MENUTYPE1, 'topmenu');
         self::getMenus(MENUTYPE2, 'sidemenu');
@@ -22,6 +25,16 @@ class AppServiceProvider extends ServiceProvider
         self::getMenus(MENUTYPE5, 'serimenu');
         self::getMenus(MENUTYPE6, 'tagmenu');
         self::getMenus(MENUTYPE7, 'mobilemenu');
+    }
+
+    private function getCode()
+    {
+        $config = DB::table('configs')->first();
+        if(isset($config)) {
+            return $config->code;
+        } else {
+            return '';
+        }
     }
 
     private function getMenus($type, $name)

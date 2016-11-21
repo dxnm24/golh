@@ -98,13 +98,7 @@ class ConfigController extends Controller
                 // 'status' => $request->status,
                 // 'lang' => $request->lang,
             ]);
-        //cache name
-        $cacheName = 'index';
-        //get cache
-        if(Cache::has($cacheName)) {
-            Cache::forget($cacheName);
-        }
-        //return
+        Cache::flush();
         return redirect()->route('admin.config.edit', $id)->with('success', 'Sửa thành công');
     }
 

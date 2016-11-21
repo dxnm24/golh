@@ -8,8 +8,8 @@
 	<meta http-equiv="Content-language" content="vi">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="revisit-after" content="1 days" />
-	<meta name="robots" content="noodp,noindex,nofollow" />
-	<meta name="language" content="english" />
+	<meta name="robots" content="noindex,nofollow" />
+	<meta name="language" content="vietnamese" />
 	<meta name='revisit-after' content='1 days' />
 	<meta name="title" content="{!! $meta_title !!}">
 	<meta name="keywords" content="{!! $meta_keyword !!}">
@@ -35,5 +35,7 @@
 	@endif
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<title>@yield('title')</title>
-	{!! GA !!}
+	@if($scriptcode)
+	{!! $scriptcode !!}
+	@endif
 </head>

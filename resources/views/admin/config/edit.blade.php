@@ -15,12 +15,12 @@
 					<h3 class="box-title">Config home</h3>
 				</div>
 				<div class="box-body">
-					<div class="form-group" style="display: none;">
+					<div class="form-group" style="display: block;">
 						<label for="code">Code</label>
 						<p>Google analytics, facebook code...</p>
 						<div class="row">
 							<div class="col-sm-8">
-								<textarea name="code" class="form-control" rows="5">{{ old('code') }}</textarea>
+								<textarea name="code" class="form-control" rows="5">{{ $data->code }}</textarea>
 							</div>
 						</div>
 					</div>
