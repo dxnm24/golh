@@ -156,9 +156,15 @@ class SiteController extends Controller
         }
         // IF SLUG IS PAGE
         //query
-        
+        $singlePage = DB::table('pages')->where('slug', $slug)->where('status', ACTIVE)->first();
         // page
-        
+        if(isset($singlePage)) {
+            //put cache
+            $html = view('site.page', ['data' => $singlePage])->render();
+            Cache::forever($cacheName, $html);
+            //return view
+            return view('site.page', ['data' => $singlePage]);
+        }        
         // IF SLUG IS TYPE
         //query
         $type = $this->getGameTypeBySlug($slug);
@@ -536,5 +542,26 @@ class SiteController extends Controller
         $data = $data->where('games.start_date', '<=', date('Y-m-d H:i:s'))
             ->orderBy('games.'.$orderColumn, $orderSort);
         return $data;
+    }
+    /* 
+    * contact
+    */
+    public function contact(Request $request)
+    {
+        trimRequest($request);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'tel' => 'max:255',
+        ]);
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        Contact::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'tel' => $request->tel,
+            ]);
+        return redirect()->back()->with('success', 'Cảm ơn bạn đã gửi thông tin liên hệ cho chúng tôi.');
     }
 }
