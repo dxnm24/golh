@@ -32,7 +32,7 @@
 		<h1>{!! $title !!}</h1>
 	</div>
 	<div class="row column">
-		<p>Keyword: {!! $request->name !!}</p>
+		<p>Keyword: {{ $request->name }}</p>
 	</div>
 	@if(isset($data) && $data->total() > 0)
 		<div class="box-inner">
