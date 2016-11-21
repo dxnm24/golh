@@ -1,7 +1,7 @@
 @include('site.common.head')
 <body>
 
-@if(isset($isPlay) && $isPlay == true)
+@if(isset($isPlay) && $isPlay == true && FACEBOOK_APPID != '')
 <script>
   window.fbAsyncInit = function() {
     FB.init({

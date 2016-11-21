@@ -154,6 +154,11 @@ class SiteController extends Controller
         if(Cache::has($cacheName)) {
             return Cache::get($cacheName);
         }
+        // IF SLUG IS PAGE
+        //query
+        
+        // page
+        
         // IF SLUG IS TYPE
         //query
         $type = $this->getGameTypeBySlug($slug);

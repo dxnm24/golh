@@ -24,7 +24,9 @@
 	@if(isset($isPlay))
 	<meta property="og:type" content="article" />
 	@endif
+	@if(FACEBOOK_APPID != '')
 	<meta property="fb:app_id" content="{!! FACEBOOK_APPID !!}" />
+	@endif
 	<link rel="shortcut icon" href="{!! url('img/favicon.png') !!}" type="image/x-icon">
 	<link rel="alternate" hreflang="vi" href="{!! env('APP_URL', 'http://gameofflinehay.com') !!}" />
 	@if(isset($pagePrev))

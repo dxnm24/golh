@@ -59,7 +59,7 @@
 					<a class="button" onclick="$('.search-form').submit()"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm</a>
 				</div>
 			</div>
-			<p>Hãy nhập tên game, hoặc 1 phần tên game bạn muốn tìm kiếm. Ví dụ: <a title="tai game skyrim" href="/tim-kiem?name=skyrim">skyrim</a>, <a title="tai game cod" href="/tim-kiem?name=call+of+duty">call of duty</a>, <a title="tai game ban ga" href="/tim-kiem?name=chicken+invaders">ban ga</a> ...</p>
+			<p>Hãy nhập tên game, hoặc 1 phần tên game bạn muốn tìm kiếm. Ví dụ: <a title="game Age of Empires" href="/tim-kiem?name=age+of+empires">đế chế</a>, <a title="game Assassin's Creed" href="/tim-kiem?name=assassins+creed">Assassin's Creed</a>, <a title="game ban ga" href="/tim-kiem?name=chicken+invaders">ban ga</a> ...</p>
         </form>
 	</div>
 </div>
