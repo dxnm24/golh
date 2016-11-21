@@ -561,6 +561,7 @@ class SiteController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'tel' => $request->tel,
+                'msg' => $request->msg,
             ]);
         return redirect()->back()->with('success', 'Cảm ơn bạn đã gửi thông tin liên hệ cho chúng tôi.');
     }

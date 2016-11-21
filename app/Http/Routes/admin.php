@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth:admin']], function ($router) {
     //page
     Route::post('page/updateStatus', 'PageController@updateStatus');
     Route::resource('page', 'PageController');
+    //contact
+    Route::resource('contact', 'ContactController');
 });
 Route::get('login', ['uses' => 'AuthController@index', 'as' => 'admin.auth.index']);
 Route::post('login', ['uses' => 'AuthController@login', 'as' => 'admin.auth.login']);

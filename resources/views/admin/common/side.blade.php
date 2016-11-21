@@ -14,6 +14,7 @@
             <li><a href="{{ route('admin.page.create') }}"><i class="fa fa-plus"></i> <span>Thêm trang đơn</span></a></li>
             <li><a href="{{ route('admin.ad.index') }}"><i class="fa fa-picture-o"></i> <span>Danh sách quảng cáo</span></a></li>
             <li><a href="{{ route('admin.ad.create') }}"><i class="fa fa-plus"></i> <span>Thêm quảng cáo</span></a></li>
+            <li><a href="{{ route('admin.contact.index') }}"><i class="fa fa-list"></i> <span>Danh sách liên hệ</span></a></li>
             <li class="header">CONFIG</li>
             <li><a href="{{ route('admin.menu.index') }}"><i class="fa fa-list"></i> <span>Quản lý menu</span></a></li>
             <li><a href="{{ route('admin.config.edit', 1) }}"><i class="fa fa-list"></i> <span>SEO meta</span></a></li>
