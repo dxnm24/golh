@@ -16,6 +16,6 @@
 @endif
 <footer>
 	<div class="row column">
-		<p class="copy">© MMXVI <a href="/" target="_blank">gameofflinehay.com</a> - <span class="made-with-love">Made with ❤ in Heaven</span></p>
+		<p class="copy">© MMXVI <a href="/" target="_blank">gameofflinehay.com</a> - <span class="made-with-love">Made with ❤ in Heaven</span> - <a href="/chinh-sach-bao-mat">Privacy & Terms</a></p>
 	</div>
 </footer>
