@@ -227,8 +227,8 @@ $fixed_image_creation                   = TRUE; //activate or not the creation o
 $fixed_path_from_filemanager            = array('thumb/','thumb/'); //fixed path of the image folder from the current position on upload folder
 $fixed_image_creation_name_to_prepend   = array('',''); //name to prepend on filename
 $fixed_image_creation_to_append         = array('',''); //name to appendon filename
-$fixed_image_creation_width             = array(200,); //width of image (you can leave empty if you set height)
-$fixed_image_creation_height            = array(130,''); //height of image (you can leave empty if you set width)
+$fixed_image_creation_width             = array(130,); //width of image (you can leave empty if you set height)
+$fixed_image_creation_height            = array(160,''); //height of image (you can leave empty if you set width)
 /*
 #             $option:     0 / exact = defined size;
 #                          1 / portrait = keep aspect set height;
@@ -248,8 +248,8 @@ $relative_image_creation                = TRUE; //activate or not the creation o
 $relative_path_from_current_pos         = array('thumb/','thumb/'); //relative path of the image folder from the current position on upload folder
 $relative_image_creation_name_to_prepend= array('',''); //name to prepend on filename
 $relative_image_creation_name_to_append = array('',''); //name to append on filename
-$relative_image_creation_width          = array(200,''); //width of image (you can leave empty if you set height)
-$relative_image_creation_height         = array(130,''); //height of image (you can leave empty if you set width)
+$relative_image_creation_width          = array(130,''); //width of image (you can leave empty if you set height)
+$relative_image_creation_height         = array(160,''); //height of image (you can leave empty if you set width)
 /*
 #             $option:     0 / exact = defined size;
 #                          1 / portrait = keep aspect set height;

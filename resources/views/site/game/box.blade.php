@@ -11,7 +11,7 @@
 	}
 ?>
 <div class="row box-large">
-	<div class="medium-4 columns">
+	<div class="medium-3 columns">
 		<div class="item">
 			<a href="{{ $url0 }}" title="{!! $data[0]->name !!}"{{ $seriClass }}>
 				@if($checkSeri == true)
@@ -22,7 +22,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="medium-8 columns">
+	<div class="medium-9 columns">
 		<h2><a href="{{ $url0 }}" title="{!! $data[0]->name !!}">{!! $data[0]->name !!}</a></h2>
 		<p>{!! $data[0]->summary !!}</p>
 	</div>

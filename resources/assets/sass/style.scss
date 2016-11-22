@@ -1,5 +1,10 @@
 * {
 	font-family: Helvetica,Arial,sans-serif;
+	-webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 ::selection {
     background: #5ba4a4;
@@ -486,6 +491,9 @@ img.info-avatar {
 	iframe {
 		max-width: 100% !important;
 		height: auto !important;
+	}
+	a {
+		font-weight: bold;
 	}
 }
 .view {
