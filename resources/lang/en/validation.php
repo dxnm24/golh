@@ -159,7 +159,10 @@ return [
         'role_id' => [
             'required' => 'Bắt buộc phải chọn quyền hạn',
         ],
-
+        'tel' => [
+            'required' => 'Bắt buộc phải nhập số điện thoại',
+            'max' => 'Số điện thoại không được nhập quá :max ký tự',
+        ],
     ],
 
     /*

@@ -32,14 +32,6 @@
 
 @section('content')
 <div class="box">
-	<div class="row column">
-		<?php
-			$breadcrumb = array(
-				['name' => $h1, 'link' => '']
-			);
-		?>
-		@include('site.common.breadcrumb', $breadcrumb)
-	</div>
 	<div class="row column box-title game-title">
 		<h1>{!! $h1 !!}</h1>
 	</div>

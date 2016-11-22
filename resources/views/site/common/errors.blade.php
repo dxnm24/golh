@@ -1,9 +1,11 @@
 @if(count($errors) > 0)
     <div class="alert callout" data-closable>
-        <h5>Error!</h5>
+        <h5>Có lỗi xảy ra!</h5>
+        <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
+        </ul>
         <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
             <span aria-hidden="true">&times;</span>
         </button>

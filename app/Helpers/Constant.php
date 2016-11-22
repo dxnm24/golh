@@ -48,3 +48,5 @@ define('GA', "");
 define('FRAME_WIDTH', '770');
 define('FRAME_HEIGHT', '510');
 define('DOMAINSITE', 'http://gameofflinehay.com');
+// replace string
+define('CONTACTFORM', '/%ContactForm%/');

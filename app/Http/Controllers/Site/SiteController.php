@@ -9,6 +9,8 @@ use App\Http\Requests;
 use DB;
 use Cache;
 use App\Helpers\CommonMethod;
+use Validator;
+use App\Models\Contact;
 
 class SiteController extends Controller
 {
@@ -159,6 +161,8 @@ class SiteController extends Controller
         $singlePage = DB::table('pages')->where('slug', $slug)->where('status', ACTIVE)->first();
         // page
         if(isset($singlePage)) {
+            $singlePage->summary = CommonMethod::replaceText($singlePage->summary);
+            // dd($singlePage);
             //put cache
             $html = view('site.page', ['data' => $singlePage])->render();
             Cache::forever($cacheName, $html);
@@ -548,6 +552,13 @@ class SiteController extends Controller
     */
     public function contact(Request $request)
     {
+        //delete cache for contact page before redirect
+        $slug = 'lien-he';
+        $cacheName = 'page_'.$slug.'_1';
+        $cacheNameMobile = 'page_'.$slug.'_1_mobile';
+        Cache::forget($cacheName);
+        Cache::forget($cacheNameMobile);
+        //
         trimRequest($request);
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',

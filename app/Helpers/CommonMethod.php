@@ -100,4 +100,21 @@ class CommonMethod
 	    }
 	    return $str;
 	}
+	static function replaceText($string='')
+	{
+		if($string == '') {
+			return '';
+		}
+		$patterns = array();
+		// string to search
+		$patterns[0] = CONTACTFORM;
+		$replacements = array();
+		// string to replace
+		$csrf_field = csrf_field();
+		$replacements[0] = '<form method="POST" action="/contact">'.$csrf_field.'<div class="row"><div class="small-3 columns"><label for="contact-name" class="text-right middle">Họ Tên</label></div><div class="small-9 columns"><input type="text" id="contact-name" name="name" /></div></div><div class="row"><div class="small-3 columns"><label for="contact-email" class="text-right middle">Email</label></div><div class="small-9 columns"><input type="email" id="contact-email" name="email" /></div></div><div class="row"><div class="small-3 columns"><label for="contact-tel" class="text-right middle">Điện Thoại</label></div><div class="small-9 columns"><input type="text" id="contact-tel" name="tel" /></div></div><div class="row"><div class="small-3 columns"><label for="contact-msg" class="text-right middle">Tin Nhắn</label></div><div class="small-9 columns"><textarea id="contact-msg" name="msg" rows="3"></textarea></div></div><div class="row"><div class="small-3 columns"></div><div class="small-9 columns"><input type="submit" value="Gửi Tin Nhắn" class="button" /></div></div></form>';
+		// sort array before replace
+		ksort($patterns);
+		ksort($replacements);
+		return preg_replace($patterns, $replacements, $string);
+	}
 }
