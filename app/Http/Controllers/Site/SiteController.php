@@ -138,6 +138,8 @@ class SiteController extends Controller
     }
     public function page(Request $request, $slug)
     {
+        self::forgetCache('lien-he');
+        //
         trimRequest($request);
         $device = getDevice();
         //update count view game
@@ -162,7 +164,6 @@ class SiteController extends Controller
         // page
         if(isset($singlePage)) {
             $singlePage->summary = CommonMethod::replaceText($singlePage->summary);
-            // dd($singlePage);
             //put cache
             $html = view('site.page', ['data' => $singlePage])->render();
             Cache::forever($cacheName, $html);
@@ -552,12 +553,7 @@ class SiteController extends Controller
     */
     public function contact(Request $request)
     {
-        //delete cache for contact page before redirect
-        $slug = 'lien-he';
-        $cacheName = 'page_'.$slug.'_1';
-        $cacheNameMobile = 'page_'.$slug.'_1_mobile';
-        Cache::forget($cacheName);
-        Cache::forget($cacheNameMobile);
+        self::forgetCache('lien-he');
         //
         trimRequest($request);
         $validator = Validator::make($request->all(), [
@@ -575,5 +571,13 @@ class SiteController extends Controller
                 'msg' => $request->msg,
             ]);
         return redirect()->back()->with('success', 'Cảm ơn bạn đã gửi thông tin liên hệ cho chúng tôi.');
+    }
+    // remove cache page if exist message validator
+    private function forgetCache($slug) {
+        //delete cache for contact page before redirect to remove message validator
+        $cacheName = 'page_'.$slug.'_1';
+        $cacheNameMobile = 'page_'.$slug.'_1_mobile';
+        Cache::forget($cacheName);
+        Cache::forget($cacheNameMobile);
     }
 }
