@@ -46,7 +46,7 @@
 @else
 <header class="show-for-medium">
 	<div class="row column">
-		<a href="/" class="logo"><img src="/img/logo.png" alt="" /></a>
+		<a href="/" class="logo"><img src="/img/logo.png" alt="game offline hay" /></a>
 		{!! $topmenu !!}
 	</div>
 </header>
