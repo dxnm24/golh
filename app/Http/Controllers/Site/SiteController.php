@@ -121,11 +121,11 @@ class SiteController extends Controller
                 }
                 if(empty($tag->meta_keyword)) {
                     $tagNameNoLatin = CommonMethod::convert_string_vi_to_en($tag->name);
-                    $tag->meta_keyword = $tagNameNoLatin.', '.$tag->name.', '.$tagNameNoLatin.' offline, '.$tag->name.' offline, '.$tagNameNoLatin.'offline hay, '.$tag->name.' offline hay'.', tai '.$tagNameNoLatin.' offline, tải '.$tag->name.' offline, download'.$tagNameNoLatin.' offline, download '.$tag->name.' offline';
+                    $tag->meta_keyword = $tagNameNoLatin.', '.$tag->name.', '.$tagNameNoLatin.' offline, '.$tag->name.' offline, '.$tagNameNoLatin.' offline hay, '.$tag->name.' offline hay'.', Tim '.$tagNameNoLatin.' offline, tìm '.$tag->name.' offline, Chơi '.$tagNameNoLatin.' offline, Chơi '.$tag->name.' offline';
                 }
                 if(empty($tag->meta_description)) {
                     $tagNameNoLatin = CommonMethod::convert_string_vi_to_en($tag->name);
-                    $tag->meta_description = 'Tai '.$tagNameNoLatin.' offline cho pc, laptop. Download '.$tagNameNoLatin.' offline hay nhất từ danh sách '.$tag->name.' tại gameofflinehay.com';
+                    $tag->meta_description = 'Tim '.$tagNameNoLatin.' offline cho pc, laptop. Chơi '.$tagNameNoLatin.' offline hay nhất từ danh sách '.$tag->name.' tại gameofflinehay.com';
                 }
                 //put cache
                 $html = view('site.game.tag', ['data' => $data, 'tag' => $tag])->render();
@@ -214,11 +214,11 @@ class SiteController extends Controller
                 }
                 if(empty($type->meta_keyword)) {
                     $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
-                    $type->meta_keyword = $typeNameNoLatin.', '.$type->name.', '.$typeNameNoLatin.' offline, '.$type->name.' offline, '.$typeNameNoLatin.'offline hay, '.$type->name.' offline hay'.', tai '.$typeNameNoLatin.' offline, tải '.$type->name.' offline, download'.$typeNameNoLatin.' offline, download '.$type->name.' offline';
+                    $type->meta_keyword = $typeNameNoLatin.', '.$type->name.', '.$typeNameNoLatin.' offline, '.$type->name.' offline, '.$typeNameNoLatin.' offline hay, '.$type->name.' offline hay'.', Tim '.$typeNameNoLatin.' offline, tìm '.$type->name.' offline, Chơi '.$typeNameNoLatin.' offline, Chơi '.$type->name.' offline';
                 }
                 if(empty($type->meta_description)) {
                     $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
-                    $type->meta_description = 'Tai '.$typeNameNoLatin.' offline cho pc, laptop. Download '.$typeNameNoLatin.' offline hay nhất từ danh sách '.$type->name.' tại gameofflinehay.com';
+                    $type->meta_description = 'Tim '.$typeNameNoLatin.' offline cho pc, laptop. Chơi '.$typeNameNoLatin.' offline hay nhất từ danh sách '.$type->name.' tại gameofflinehay.com';
                 }
                 //put cache
                 $html = view('site.game.type', ['data' => $data, 'type' => $type, 'total' => $total, 'paginate' => $paginate])->render();
@@ -262,11 +262,11 @@ class SiteController extends Controller
                     }
                     if(empty($type->meta_keyword)) {
                         $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
-                        $type->meta_keyword = $typeNameNoLatin.', '.$type->name.', tai '.$typeNameNoLatin.', tải '.$type->name.', download'.$typeNameNoLatin.', download '.$type->name;
+                        $type->meta_keyword = $typeNameNoLatin.', '.$type->name.', Tim '.$typeNameNoLatin.', tìm '.$type->name.', Chơi '.$typeNameNoLatin.', Chơi '.$type->name;
                     }
                     if(empty($type->meta_description)) {
                         $typeNameNoLatin = CommonMethod::convert_string_vi_to_en($type->name);
-                        $type->meta_description = 'Tai '.$typeNameNoLatin.' cho pc, laptop, máy cấu hình yếu. Download '.$typeNameNoLatin.' từ danh sách '.$type->name.' tổng hợp tại gameofflinehay.com';
+                        $type->meta_description = 'Tim '.$typeNameNoLatin.' cho pc, laptop, máy cấu hình yếu. Chơi '.$typeNameNoLatin.' từ danh sách '.$type->name.' tổng hợp tại gameofflinehay.com';
                     }
                     //put cache
                     $html = view('site.game.type', ['data' => $data, 'type' => $type, 'total' => $total, 'paginate' => $paginate, 'isHotOrNew' => $isHotOrNew])->render();
@@ -317,13 +317,13 @@ class SiteController extends Controller
             }
             //auto meta tag for seo
             if(empty($game->meta_title)) {
-                $game->meta_title = $game->name.' | tải game '.$game->name.' tại gameofflinehay.com';
+                $game->meta_title = $game->name.' | Tìm game '.$game->name.' tại gameofflinehay.com';
             }
             if(empty($game->meta_keyword)) {
-                $game->meta_keyword = $game->name.', game '.$game->name.', tai game '.$game->name.', tai game offline'.$game->name.', game '.$game->name.' offline';
+                $game->meta_keyword = $game->name.', game '.$game->name.', Tim game '.$game->name.', Tim game offline '.$game->name.', game '.$game->name.' offline';
             }
             if(empty($game->meta_description)) {
-                $game->meta_description = 'Game '.$game->name.' cực hay. Tai game '.$game->name.'. Chơi '.$typeMain->name.' '.$game->name.' để tận hưởng những giây phút tuyệt vời mà game offline mang lại';
+                $game->meta_description = 'Game '.$game->name.' cực hay. Tim game '.$game->name.'. Chơi '.$typeMain->name.' '.$game->name.' để tận hưởng những giây phút tuyệt vời mà game offline mang lại';
             }
             //ad preroll
             if($device == PC) {
