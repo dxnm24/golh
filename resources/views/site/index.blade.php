@@ -49,27 +49,27 @@
 			<div class="box">
 				<ul class="box-tabs clearfix" data-tabs id="box-tabs-{{ $value->id }}">
 					<li class="tabs-title is-active">
-						<h3><a href="#{{ $value->slug.'-offline-hay-nhat' }}" aria-selected="true">{!! $value->name !!} offline hay nhất</a></h3>
+						<h3><a href="#{{ $value->slug.'-offline-hay-nhat' }}" aria-selected="true" rel="nofollow">{!! $value->name !!} offline hay nhất</a></h3>
 					</li>
 					<li class="tabs-title">
-						<h3><a href="#{{ $value->slug.'-offline-moi-nhat' }}">{!! $value->name !!} offline mới nhất</a></h3>
+						<h3><a href="#{{ $value->slug.'-offline-moi-nhat' }}" rel="nofollow">{!! $value->name !!} offline mới nhất</a></h3>
 					</li>
 				</ul>
 				<div class="box-inner" data-tabs-content="box-tabs-{{ $value->id }}">
 					<div class="tabs-panel is-active" id="{{ $value->slug.'-offline-hay-nhat' }}">
-						<a href="{{ $urlBest }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
+						<a href="{{ $urlBest }}" class="btn-seemore float-right hide-for-small-only" rel="nofollow"><span>Xem tất cả</span></a>
 						<div class="clearfix"></div>
 						@include('site.game.box', array('data' => $value->games2))
 					</div>
 					<div class="tabs-panel" id="{{ $value->slug.'-offline-moi-nhat' }}">
-						<a href="{{ $urlLatest }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
+						<a href="{{ $urlLatest }}" class="btn-seemore float-right hide-for-small-only" rel="nofollow"><span>Xem tất cả</span></a>
 						<div class="clearfix"></div>
 						@include('site.game.box', array('data' => $value->games))
 					</div>
 				</div>
 				<div class="row column show-for-small-only box-seemore">
-					<a href="{{ $urlBest }}" class="btn-seemore">Xem {!! $value->name !!} offline hay nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
-					<a href="{{ $urlLatest }}" class="btn-seemore">Xem {!! $value->name !!} offline mới nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+					<a href="{{ $urlBest }}" class="btn-seemore" rel="nofollow">Xem {!! $value->name !!} offline hay nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+					<a href="{{ $urlLatest }}" class="btn-seemore" rel="nofollow">Xem {!! $value->name !!} offline mới nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 					<a href="{{ $url }}" class="btn-seemore">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 				</div>
 			</div>
