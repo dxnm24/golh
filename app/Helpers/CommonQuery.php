@@ -61,7 +61,7 @@ class CommonQuery
             ->where('status', ACTIVE)
             ->first();
         if($data) {
-            return '<div class"row column"><div class="gooo">'.$data->code.'</div></div>';
+            return '<div class="row column"><div class="gooo">'.$data->code.'</div></div>';
         }
         return '';
     }
