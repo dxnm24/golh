@@ -30,7 +30,7 @@
 			<?php $url = url($value->slug); ?>
 			@if(count($value->games2) == 0)
 			<div class="box">
-				<div class="row column box-title">
+				<div class="row column box-title box-title-hr">
 					<h3>{!! $value->name !!}</h3>
 					<a href="{{ $url }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
 				</div>

@@ -7,7 +7,7 @@
 	}
 ?>
 <div class="gametypes">
-	<div class="row column box-title">
+	<div class="row column box-title box-title-hr">
 		<h3>{!! $data->name !!}</h3>
 		<a href="{{ $url }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
 	</div>
