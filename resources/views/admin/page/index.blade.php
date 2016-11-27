@@ -28,14 +28,14 @@
 					</tr>
 					@foreach($data as $key => $value)
 					<?php 
-			            $gameTypeUrl = CommonUrl::getUrl($value->slug, 1);
+			            $url = CommonUrl::getUrl($value->slug, 1);
 			        ?>
 					<tr>
 						<td>{{ $value->name }}</td>
-						<td>{{ $gameTypeUrl }}</td>
+						<td>{{ $url }}</td>
 						<td><a id="status_{{ $value->id }}" onclick="updateStatus({{ $value->id }}, 'status')" style="cursor: pointer;" title="Click to change">{!! CommonOption::getStatus($value->status) !!}</a></td>
 						<td>
-							<a href="{{ $gameTypeUrl }}" class="btn btn-success" target="_blank">Xem</a>
+							<a href="{{ $url }}" class="btn btn-success" target="_blank">Xem</a>
 							<a href="{{ route('admin.page.edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 							<form method="POST" action="{{ route('admin.page.destroy', $value->id) }}" style="display: inline-block;">
 								{{ method_field('DELETE') }}
