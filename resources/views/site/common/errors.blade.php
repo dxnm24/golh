@@ -21,7 +21,7 @@
 @endif
 @if(Session::has('warning'))
     <div class="warning callout" data-closable>
-        <b><i class="fa fa-warning"></i> Cảnh báo!</b> {{ Session::get('warning') }}
+        <b><i class="fa fa-warning"></i> Chú ý!</b> {{ Session::get('warning') }}
         <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
             <span aria-hidden="true">&times;</span>
         </button>

@@ -555,6 +555,17 @@ class SiteController extends Controller
     {
         self::forgetCache('lien-he');
         //
+        $ip = get_client_ip();
+        $now = strtotime(date('Y-m-d H:i:s'));
+        $range = 60; //second
+        $time = $now - $range;
+        $past = date('Y-m-d H:i:s', $time);
+        // check ip with time
+        $checkIP = DB::table('contacts')->where('ip', $ip)->where('created_at', '>', $past)->count();
+        if($checkIP > 0) {
+            return redirect()->back()->with('warning', 'Hệ thống đang bận. Xin bạn hãy thử lại sau ít phút.');
+        }
+        //
         trimRequest($request);
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
@@ -569,6 +580,7 @@ class SiteController extends Controller
                 'email' => $request->email,
                 'tel' => $request->tel,
                 'msg' => $request->msg,
+                'ip' => $ip,
             ]);
         return redirect()->back()->with('success', 'Cảm ơn bạn đã gửi thông tin liên hệ cho chúng tôi.');
     }
