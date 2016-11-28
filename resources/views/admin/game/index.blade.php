@@ -22,6 +22,7 @@
 			<div class="box-body table-responsive no-padding">
 				<table class="table table-hover">
 					<tr>
+						<th>Image</th>
 						<th>Name</th>
 						<th>Thể loại chính</th>
 						<th>Loại game</th>
@@ -31,7 +32,12 @@
 						<th style="width:240px;">Action</th>
 					</tr>
 					@foreach($data as $key => $value)
+					<?php 
+						$thumbnail = str_replace('/images/', '/thumbs/', $value->image);
+						$thumbnail = str_replace('/thumb/', '/', $thumbnail);
+					?>
 					<tr>
+						<td><img height="30px" src="{{ $thumbnail }}" /></td>
 						<td>{{ $value->name }}</td>
 						<td>{{ CommonQuery::getFieldById('game_types', $value->type_main_id, 'name') }}</td>
 						<td>{{ CommonOption::getTypeGame($value->type) }}</td>
