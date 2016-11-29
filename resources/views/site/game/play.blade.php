@@ -37,9 +37,18 @@
 <div class="box">
 	<div class="row column">
 		<?php
-			$breadcrumb = array(
-				['name' => $h1, 'link' => '']
-			);
+			if(isset($typeMainParent)) {
+				$breadcrumb = array(
+					['name' => $typeMainParent->name, 'link' => url($typeMainParent->slug)],
+					['name' => $typeMain->name, 'link' => url($typeMainParent->slug.'/'.$typeMain->slug)],
+					['name' => $h1, 'link' => '']
+				);
+			} else {
+				$breadcrumb = array(
+					['name' => $typeMain->name, 'link' => url($typeMain->slug)],
+					['name' => $h1, 'link' => '']
+				);
+			}
 		?>
 		@include('site.common.breadcrumb', $breadcrumb)
 	</div>
