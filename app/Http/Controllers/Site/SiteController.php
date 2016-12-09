@@ -298,7 +298,7 @@ class SiteController extends Controller
                 ->get();
             //related items limit
             if($device == MOBILE) {
-                $relatedLimit = PAGINATE_BOX;
+                $relatedLimit = PAGINATE_BOX2;
             } else {
                 $relatedLimit = PAGINATE_BOX1;
             }

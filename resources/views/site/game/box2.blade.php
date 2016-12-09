@@ -11,14 +11,7 @@
 			$seriClass = '';
 			$url = url($value->slug);
 		}
-		$device = getDevice();
-		if($device == MOBILE) {
-			$maxKey = PAGINATE_BOX2;
-		} else {
-			$maxKey = PAGINATE_BOX1;
-		}
 	?>
-	@if($key >= 0 && $key < $maxKey)
 	<div class="column">
 		<div class="callout item">
 			<a href="{{ $url }}" title="{!! $value->name !!}"{{ $seriClass }}>
@@ -31,6 +24,5 @@
 			<h2><a href="{{ $url }}" title="{!! $value->name !!}">{!! $value->name !!}</a></h2>
 		</div>
 	</div>
-	@endif
 	@endforeach
 </div>
