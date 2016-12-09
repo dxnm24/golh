@@ -1,3 +1,6 @@
+<?php 
+	$device = getDevice();
+?>
 <div class="box-large">
 	@foreach($data as $key => $value)
 	<?php 
@@ -12,6 +15,31 @@
 			$url = url($value->slug);
 		}
 	?>
+	@if($device == MOBILE)
+	<div class="box-large-item">
+		<div class="row">
+			<div class="small-6 columns">
+				<div class="item">
+					<a href="{{ $url }}" title="{!! $value->name !!}"{{ $seriClass }}>
+						@if($checkSeri == true)
+						<span><img alt="{!! $value->name !!}" title="{!! $value->name !!}" data-src="{{ url($value->image) }}" class="lazyload"></span>
+						@else
+						<img alt="{!! $value->name !!}" title="{!! $value->name !!}" data-src="{{ url($value->image) }}" class="lazyload">
+						@endif
+					</a>
+				</div>
+			</div>
+			<div class="small-6 columns">
+				<h2><a href="{{ $url }}" title="{!! $value->name !!}">{!! $value->name !!}</a></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<p>{!! $value->summary !!}</p>
+			</div>
+		</div>
+	</div>
+	@else
 	<div class="box-large-item">
 		<div class="row">
 			<div class="medium-3 columns">
@@ -31,5 +59,6 @@
 			</div>
 		</div>
 	</div>
+	@endif
 	@endforeach
 </div>

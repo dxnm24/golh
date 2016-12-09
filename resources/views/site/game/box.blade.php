@@ -9,7 +9,31 @@
 		$seriClass = '';
 		$url0 = url($data[0]->slug);
 	}
+	$device = getDevice();
 ?>
+@if($device == MOBILE)
+<div class="row box-large">
+	<div class="small-6 columns">
+		<div class="item">
+			<a href="{{ $url0 }}" title="{!! $data[0]->name !!}"{{ $seriClass }}>
+				@if($checkSeri == true)
+				<span><img alt="{!! $data[0]->name !!}" title="{!! $data[0]->name !!}" data-src="{{ url($data[0]->image) }}" class="lazyload"></span>
+				@else
+				<img alt="{!! $data[0]->name !!}" title="{!! $data[0]->name !!}" data-src="{{ url($data[0]->image) }}" class="lazyload">
+				@endif
+			</a>
+		</div>
+	</div>
+	<div class="small-6 columns">
+		<h2><a href="{{ $url0 }}" title="{!! $data[0]->name !!}">{!! $data[0]->name !!}</a></h2>
+	</div>
+</div>
+<div class="row box-large">
+	<div class="column">
+		<p>{!! $data[0]->summary !!}</p>
+	</div>
+</div>
+@else
 <div class="row box-large">
 	<div class="medium-3 columns">
 		<div class="item">
@@ -27,6 +51,7 @@
 		<p>{!! $data[0]->summary !!}</p>
 	</div>
 </div>
+@endif
 <div class="row small-up-2 medium-up-4 large-up-5">
 	@foreach($data as $key => $value)
 	<?php 
