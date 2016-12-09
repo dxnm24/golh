@@ -8,14 +8,13 @@
 ?>
 <div class="gametypes">
 	<div class="row column box-title box-title-hr">
-		<h3>{!! $data->name !!}</h3>
-		<a href="{{ $url }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
+		<h3><a href="{{ $url }}" title="{!! $data->name !!}">{!! $data->name !!}</a></h3>
 	</div>
 	<div class="box-inner">
-	@include('site.game.box', array('data' => $gameData))
+	@include('site.game.box1', array('data' => $gameData))
 	</div>
 	<div class="row column show-for-small-only box-seemore">
-		<a href="{{ $url }}" class="btn-seemore">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+		<a href="{{ $url }}" class="btn-seemore" rel="nofollow">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 	</div>
 </div>
 @endif

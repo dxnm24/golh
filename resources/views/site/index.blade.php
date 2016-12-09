@@ -31,14 +31,17 @@
 			@if(count($value->games2) == 0)
 			<div class="box">
 				<div class="row column box-title box-title-hr">
-					<h3>{!! $value->name !!}</h3>
-					<a href="{{ $url }}" class="btn-seemore float-right hide-for-small-only"><span>Xem tất cả</span></a>
+					<h3><a href="{{ $url }}" title="{!! $value->name !!}">{!! $value->name !!}</a></h3>
 				</div>
 				<div class="box-inner">
+				@if($key == 0)
 				@include('site.game.box', array('data' => $value->games, 'type' => $value))
+				@else 
+				@include('site.game.box1', array('data' => $value->games, 'type' => $value))
+				@endif
 				</div>
 				<div class="row column show-for-small-only box-seemore">
-					<a href="{{ $url }}" class="btn-seemore">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+					<a href="{{ $url }}" class="btn-seemore" rel="nofollow">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 				</div>
 			</div>
 			@else
@@ -59,17 +62,25 @@
 					<div class="tabs-panel is-active" id="{{ $value->slug.'-offline-hay-nhat' }}">
 						<a href="{{ $urlBest }}" class="btn-seemore float-right hide-for-small-only" rel="nofollow"><span>Xem tất cả</span></a>
 						<div class="clearfix"></div>
-						@include('site.game.box', array('data' => $value->games2))
+						@if($key == 0)
+						@include('site.game.box', array('data' => $value->games2, 'type' => $value))
+						@else 
+						@include('site.game.box1', array('data' => $value->games2, 'type' => $value))
+						@endif
 					</div>
 					<div class="tabs-panel" id="{{ $value->slug.'-offline-moi-nhat' }}">
 						<a href="{{ $urlLatest }}" class="btn-seemore float-right hide-for-small-only" rel="nofollow"><span>Xem tất cả</span></a>
 						<div class="clearfix"></div>
-						@include('site.game.box', array('data' => $value->games))
+						@if($key == 0)
+						@include('site.game.box', array('data' => $value->games, 'type' => $value))
+						@else 
+						@include('site.game.box1', array('data' => $value->games, 'type' => $value))
+						@endif
 					</div>
 				</div>
 				<div class="row column show-for-small-only box-seemore">
-					<a href="{{ $urlBest }}" class="btn-seemore" rel="nofollow">Xem {!! $value->name !!} offline hay nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
-					<a href="{{ $urlLatest }}" class="btn-seemore" rel="nofollow">Xem {!! $value->name !!} offline mới nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+					<a href="{{ $urlBest }}" class="btn-seemore">Xem {!! $value->name !!} offline hay nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+					<a href="{{ $urlLatest }}" class="btn-seemore">Xem {!! $value->name !!} offline mới nhất<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 					<a href="{{ $url }}" class="btn-seemore">Xem tất cả<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
 				</div>
 			</div>

@@ -7,13 +7,7 @@
 				<a class="mobile-menuopen" data-toggle="mobile-menubox" aria-controls="mobile-menubox" aria-haspopup="true" tabindex="0"><i class="fa fa-bars" aria-hidden="true"></i></a>
 			</div>
 			<div class="small-9 columns">
-				<div class="logo">
-					<a href="/">
-						<span class="logo-color-1">GAME</span>
-						<span class="logo-color-2">OFFLINE</span>
-						<span class="logo-color-3">HAY</span>
-					</a>
-				</div>
+				<a href="/" class="logo"><img src="/img/logo.png" alt="game offline hay" /></a>
 			</div>
 		</div>
 	</div>

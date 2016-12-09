@@ -39,7 +39,11 @@ class SiteController extends Controller
                 if(!empty($value->limited) && $value->limited > 0) {
                     $typeLimit = $value->limited;
                 } else {
-                    $typeLimit = PAGINATE_BOX;
+                    if($device == MOBILE) {
+                        $typeLimit = PAGINATE_BOX1;
+                    } else {
+                        $typeLimit = PAGINATE_BOX;
+                    }
                 }
                 // check parent_id
                 $types = $this->getGameTypeByParentIdQuery($value->id)->take($typeLimit)->get();
@@ -292,18 +296,24 @@ class SiteController extends Controller
                 ->where('game_tags.status', ACTIVE)
                 ->orderBy('game_tags.name')
                 ->get();
+            //related items limit
+            if($device == MOBILE) {
+                $relatedLimit = PAGINATE_BOX;
+            } else {
+                $relatedLimit = PAGINATE_BOX1;
+            }
             //list seri
-            $gameSeriesQuery = $this->getGameTypeQuery($game->seri, [$game->id]);
+            $gameSeriesQuery = $this->getGameTypeQuery($game->seri, [$game->id], $relatedLimit);
             $gameSeries = $gameSeriesQuery->get();
             $gameSeriesIds = $gameSeriesQuery->pluck('id');
             //list type
             $existGameIds = array_prepend($gameSeriesIds, $game->id);
-            $gameTypesQuery = $this->getGameTypeQuery($game->type_main_id, $existGameIds);
+            $gameTypesQuery = $this->getGameTypeQuery($game->type_main_id, $existGameIds, $relatedLimit);
             $gameTypes = $gameTypesQuery->get();
             $gameTypesIds = $gameTypesQuery->pluck('id');
             //list related
             $existGameIds2 = $existGameIds + $gameTypesIds;
-            $gameRelatedQuery = $this->getGameTypeQuery($game->related, $existGameIds2);
+            $gameRelatedQuery = $this->getGameTypeQuery($game->related, $existGameIds2, $relatedLimit);
             $gameRelated = $gameRelatedQuery->get();
             //FIRST: type, seri, related
             $typeMain = $this->getGameTypeById($game->type_main_id);
@@ -479,7 +489,7 @@ class SiteController extends Controller
         $content = view('site.sitemap');
         return response($content)->header('Content-Type', 'text/xml;charset=utf-8');
     }
-    private function getGameTypeQuery($id, $ids)
+    private function getGameTypeQuery($id, $ids, $limit = PAGINATE_BOX)
     {
         $data = DB::table('games')
             ->join('game_type_relations', 'games.id', '=', 'game_type_relations.game_id')
@@ -493,7 +503,7 @@ class SiteController extends Controller
         $data = $data->where('games.start_date', '<=', date('Y-m-d H:i:s'))
             ->whereNotIn('game_type_relations.game_id', $ids)
             ->orderBy('games.start_date', 'desc')
-            ->take(PAGINATE_BOX);
+            ->take($limit);
         return $data;
     }
     private function getGameTypeByParentIdQuery($id)

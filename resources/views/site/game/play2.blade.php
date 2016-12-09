@@ -14,7 +14,7 @@
 	<meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" name="viewport">
 	<link rel="icon" href="{{ url('img/favicon.png') }}" type="image/x-icon">
-	<title>{!! $game->name !!}</title>
+	<title>{!! $game->meta_title !!}</title>
 	@if($scriptcode)
 	{!! $scriptcode !!}
 	@endif
