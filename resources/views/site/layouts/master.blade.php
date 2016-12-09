@@ -38,6 +38,6 @@
 @include('site.common.ad', ['posPc' => 3, 'posMobile' => 4])
 @include('site.common.bottom')
 
-<script src="{{ asset('js/app.js') }}"></script>
+<script async src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

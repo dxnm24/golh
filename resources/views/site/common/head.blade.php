@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-language" content="vi">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="revisit-after" content="1 days" />
-	<meta name="robots" content="noindex,nofollow" />
+	<meta name="robots" content="noodp,index,follow" />
 	<meta name="language" content="vietnamese" />
 	<meta name='revisit-after' content='1 days' />
 	<meta name="title" content="{!! $meta_title !!}">
