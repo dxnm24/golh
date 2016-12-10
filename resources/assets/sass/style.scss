@@ -313,7 +313,7 @@ ul.box-tabs {
 	
 }
 .box-title {
-    padding: 0.938rem 0;
+    padding: 0.938rem 0 0;
     margin-bottom: 0.938rem;
 	> h1, > h3 {
 		font-size: 1rem;
@@ -336,6 +336,7 @@ ul.box-tabs {
 	    color: #3a3939;
 	    padding-left: 0;
 	    padding-right: 0;
+	    padding-bottom: 0.938rem;
 	}
 }
 ul.box-tabs > li.is-active > h3 > a {
