@@ -1,3 +1,19 @@
+<?php $device = getDevice2(); ?>
+@if($device != MOBILE)
+<div class="search">
+	<div class="row column">
+		<form action="{{ route('site.search') }}" method="GET" class="search-form">
+			<div class="input-group">
+				<input name="name" type="text" value="" class="input-group-field" id="searchtext" placeholder="Tìm kiếm">
+				<div class="input-group-button">
+					<a class="button" onclick="$('.search-form').submit()"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm</a>
+				</div>
+			</div>
+			<p>Hãy nhập tên game, hoặc 1 phần tên game bạn muốn tìm kiếm. Ví dụ: <a title="game Age of Empires" href="/tim-kiem?name=age+of+empires">đế chế</a>, <a title="game Assassin's Creed" href="/tim-kiem?name=assassins+creed">Assassin's Creed</a>, <a title="game ban ga" href="/tim-kiem?name=chicken+invaders">ban ga</a> ...</p>
+        </form>
+	</div>
+</div>
+@endif
 @if($topgamemenu)
 <div class="side">
 	<h3>Bảng xếp hạng game hay nhất năm</h3>
