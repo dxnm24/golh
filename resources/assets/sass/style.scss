@@ -71,27 +71,34 @@ a:focus {
 		border-bottom: none;
 	}
 	> li > ul {
-    	margin-top: 0.625rem;
-    	background: #f2f2f3;
-    	border: 0.188rem solid #25a269;
+    	margin-top: 0.500rem;
+    	background: #fff;
     	-webkit-border-radius: 0.188rem;
 		border-radius: 0.188rem;
+		-webkit-box-shadow: 0px 0px 5px #999;
+		box-shadow: 0px 0px 5px #999;
+		min-width: 230px;
     	li {
     		a {
 	    		color: #262626;
-	    		padding: 0.625rem 0.938rem;
+	    		padding: 0.938rem;
 	    		font-size: 0.938rem;
+	    		transition: normal;
+	    		-webkit-transition: padding 0.25s;
+    			transition: padding 0.25s;
     		}
     		a:hover,
     		a:focus {
-    			color: #25a269;
+    			color: #fff;
+    			background: #25a269;
+    			padding-left: 1.250rem;
     		}
     	}
     	li:first-child a {
-    		padding-top: 0.938rem;
+    		// padding-top: 0.938rem;
     	}
     	li:last-child a {
-    		padding-bottom: 0.938rem;
+    		// padding-bottom: 0.938rem;
     	}
     }
     > li > ul:before {
@@ -101,21 +108,21 @@ a:focus {
 	    height: 0;
 	    width: 0;
 	    vertical-align: middle;
-	    border-bottom: 6px solid #25a269;
-	    border-left: 5px solid transparent;
-	    border-right: 5px solid transparent;
+	    border-bottom: 9px solid #fff;
+	    border-left: 8px solid transparent;
+	    border-right: 8px solid transparent;
 	    margin-left: 0;
 	    position: absolute;
 	    left: 25%;
         top: -9px;
-    	border-bottom-color: #25a269;
+    	border-bottom-color: #fff;
     }
 }
 .dropdown.menu>li.is-dropdown-submenu-parent>a:after {
-    border-color: #25a269 transparent transparent;
+    border-color: #fff transparent transparent;
 }
 .is-dropdown-submenu .is-dropdown-submenu-parent.opens-right>a:after {
-	border-color: transparent transparent transparent #25a269;
+	border-color: transparent transparent transparent #fff;
 }
 // END MENU
 a.logo {
