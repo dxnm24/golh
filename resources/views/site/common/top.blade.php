@@ -16,8 +16,12 @@
 	<div class="column">
 		<div class="mobile-search">
 			<form action="{{ route('site.search') }}" method="GET" class="search-form">
-				<input name="name" type="text" value="" class="search-input" placeholder="Tìm kiếm">
-				<a class="search-button" onclick="$('.search-form').submit()"><i class="fa fa-search" aria-hidden="true"></i></a>
+				<div class="input-group">
+					<input name="name" type="text" value="" class="input-group-field" id="searchtext" placeholder="Tìm kiếm">
+					<div class="input-group-button">
+						<a class="search-button" onclick="$('.search-form').submit()"><i class="fa fa-search" aria-hidden="true"></i></a>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
