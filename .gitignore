@@ -3,6 +3,7 @@ node_modules/
 public/images
 public/thumbs
 public/adminlte/plugins/tinymce/plugins/filemanager/thumb/
+sftp-config.json
 
 # Laravel 4 specific
 bootstrap/compiled.php
