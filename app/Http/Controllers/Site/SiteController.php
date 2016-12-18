@@ -55,7 +55,7 @@ class SiteController extends Controller
                         $limit = $typeLimit - $countTypes;
                     }
                     if($value->type == ACTIVE && $limit > 0) {
-                        $gametypes = $this->getGameByTypeQuery($value->id)->take($limit)->get();
+                        $gametypes = $this->getGameByTypeQuery($value->id, 'view')->take($limit)->get();
                         // $gametypes_sortbyview = $this->getGameByTypeQuery($value->id, 'view')->take($limit)->get();
                     } else {
                         $gametypes = $this->getGameByRelationsQuery('type', $value->id, $value->sort_by)->take($limit)->get();
@@ -78,8 +78,9 @@ class SiteController extends Controller
                     // $value->games->seri = ACTIVE;
                 } else {
                     if($value->type == ACTIVE) {
-                        $value->games = $this->getGameByTypeQuery($value->id)->take($typeLimit)->get();
-                        $value->games2 = $this->getGameByTypeQuery($value->id, 'view')->take($typeLimit)->get();
+                        $value->games = $this->getGameByTypeQuery($value->id, 'view')->take($typeLimit)->get();
+                        // $value->games2 = $this->getGameByTypeQuery($value->id, 'view')->take($typeLimit)->get();
+                        $value->games2 = [];
                     } else {
                         $value->games = $this->getGameByRelationsQuery('type', $value->id, $value->sort_by)->take($typeLimit)->get();
                         $value->games2 = [];
