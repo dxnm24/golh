@@ -43,7 +43,7 @@ define('MOBILE', 1);
 define('PC', 2);
 define('TABLET', 3);
 //facebook id
-define('FACEBOOK_APPID', '');
+define('FACEBOOK_APPID', '406878849703198');
 //google code
 define('GA', "");
 // default game frame

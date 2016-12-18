@@ -25,8 +25,31 @@
 	             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
 	             "save table contextmenu directionality emoticons template paste textcolor"
 	       ],
-	       content_css: "css/content.css",
-	       toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor | formatselect fontselect fontsizeselect | link unlink | removeformat",
+   			content_css: "css/content.css",
+			toolbar: "undo redo | bold italic | formatselect fontselect fontsizeselect | forecolor backcolor | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image media | link unlink | mybutton",
+
+   			//add more button
+			setup: function (editor) {
+				editor.addButton('mybutton', {
+				  type: 'listbox',
+				  text: 'Chèn',
+				  icon: false,
+				  onselect: function (e) {
+				    editor.insertContent(this.value());
+				  },
+				  values: [
+				    { text: 'Torrent', value: 'Torrent Download' },
+				    { text: 'Mediafire', value: 'Mediafire Download' },
+				    { text: 'Mega', value: 'Mega Download' },
+				    { text: 'Fshare', value: 'Fshare Download' }
+				  ],
+				  onPostRender: function () {
+				    // Select the second item by default
+				    this.value('&nbsp;<em>Some italic text!</em>');
+				  }
+				});
+			},
+		  	//end add more button
 	       
 	       style_formats: [
 	            {title: 'Bold text', inline: 'b'},
