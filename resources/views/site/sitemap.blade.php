@@ -22,6 +22,7 @@
         ?>
         <url>
         	<loc>{{ $gameTypeUrl }}</loc>
+            <lastmod>{{ date('Y-m-d', strtotime($value->updated_at)) }}</lastmod>
     		<changefreq>weekly</changefreq>
     		<priority>0.8</priority>
         </url>
@@ -31,6 +32,7 @@
         @foreach($gameTags as $value)
         <url>
         	<loc>{{ url('tag/'.$value->slug) }}</loc>
+            <lastmod>{{ date('Y-m-d', strtotime($value->updated_at)) }}</lastmod>
     		<changefreq>weekly</changefreq>
     		<priority>0.8</priority>
         </url>
@@ -40,7 +42,7 @@
         @foreach($games as $value)
     	    <url>
     	    	<loc>{{ url($value->slug) }}</loc>
-    	    	<lastmod>{{ date('Y-m-d', strtotime($value->start_date)) }}</lastmod>
+    	    	<lastmod>{{ date('Y-m-d', strtotime($value->updated_at)) }}</lastmod>
     			<changefreq>weekly</changefreq>
     			<priority>0.8</priority>
     	    </url>
