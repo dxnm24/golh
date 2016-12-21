@@ -53,7 +53,7 @@
 				editor.addButton('mybutton2', {
 					text: 'Download',
 					onclick : function() {
-						editor.insertContent('<p><a href="#" class="a-btn" rel="nofollow"><span class="a-btn-symbol">Z</span><span class="a-btn-text">Download Now</span><span class="a-btn-slide-text">Tải game hay cho PC</span><span class="a-btn-slide-icon">&nbsp;</span></a></p>');
+						editor.insertContent('<p class="clearfix"><a href="#" class="a-btn" rel="nofollow"><span class="a-btn-symbol">Z</span><span class="a-btn-text">Download Now</span><span class="a-btn-slide-text">Tải game hay cho PC</span><span class="a-btn-slide-icon">&nbsp;</span></a></p>');
 						// editor.windowManager.alert('Hello world!! Selection: ' + editor.selection.getContent({format : 'text'}));
 					}
 				});
@@ -61,7 +61,7 @@
 				editor.addButton('mybutton3', {
 					text: 'Help',
 					onclick : function() {
-						editor.insertContent('<p><a href="/huong-dan-tai-game-bang-torrent" title="Hướng dẫn tải game bằng torrent" rel="nofollow">Tham khảo hướng dẫn cách tải game bằng link torrent</a></p>');
+						editor.insertContent('<p class="clearfix"><a href="/huong-dan-tai-game-bang-torrent" title="Hướng dẫn tải game bằng torrent">Tham khảo hướng dẫn cách tải game bằng link torrent</a></p>');
 					}
 				});
 
