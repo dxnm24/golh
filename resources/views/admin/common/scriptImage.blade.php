@@ -26,7 +26,7 @@
 	             "save table contextmenu directionality emoticons template paste textcolor"
 	       ],
    			content_css: "css/content.css",
-			toolbar: "undo redo | bold italic | formatselect fontselect fontsizeselect | forecolor backcolor | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image media | link unlink | mybutton mybutton2",
+			toolbar: "undo redo | bold italic | formatselect fontselect fontsizeselect | forecolor backcolor | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image media | link unlink | mybutton mybutton2 mybutton3",
 
    			//add more button
 			setup: function (editor) {
@@ -55,6 +55,13 @@
 					onclick : function() {
 						editor.insertContent('<p><a href="#" class="a-btn" rel="nofollow"><span class="a-btn-symbol">Z</span><span class="a-btn-text">Download Now</span><span class="a-btn-slide-text">Tải game hay cho PC</span><span class="a-btn-slide-icon">&nbsp;</span></a></p>');
 						// editor.windowManager.alert('Hello world!! Selection: ' + editor.selection.getContent({format : 'text'}));
+					}
+				});
+
+				editor.addButton('mybutton3', {
+					text: 'Help',
+					onclick : function() {
+						editor.insertContent('<p><a href="/huong-dan-tai-game-bang-torrent" title="Hướng dẫn tải game bằng torrent" rel="nofollow">Tham khảo hướng dẫn cách tải game bằng link torrent</a></p>');
 					}
 				});
 
