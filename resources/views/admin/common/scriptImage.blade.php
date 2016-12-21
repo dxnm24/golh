@@ -26,7 +26,7 @@
 	             "save table contextmenu directionality emoticons template paste textcolor"
 	       ],
    			content_css: "css/content.css",
-			toolbar: "undo redo | bold italic | formatselect fontselect fontsizeselect | forecolor backcolor | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image media | link unlink | mybutton",
+			toolbar: "undo redo | bold italic | formatselect fontselect fontsizeselect | forecolor backcolor | removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image media | link unlink | mybutton mybutton2",
 
    			//add more button
 			setup: function (editor) {
@@ -38,16 +38,26 @@
 				    editor.insertContent(this.value());
 				  },
 				  values: [
-				    { text: 'Torrent', value: 'Torrent Download' },
-				    { text: 'Mediafire', value: 'Mediafire Download' },
-				    { text: 'Mega', value: 'Mega Download' },
-				    { text: 'Fshare', value: 'Fshare Download' }
+				    { text: 'Torrent', value: '<p><img alt="Torrent Download" src="/img/torrent.png" /></p>' },
+				    { text: 'Mediafire', value: '<p><img alt="Mediafire Download" src="/img/mediafire.png" /></p>' },
+				    { text: 'Mega', value: '<p><img alt="Mega Download" src="/img/mega.png" /></p>' },
+				    { text: 'Drive', value: '<p><img alt="Google Drive Download" src="/img/gdrive.png" /></p>' },
+				    { text: 'Fshare', value: '<p><img alt="Fshare Download" src="/img/fshare.png" /></p>' }
 				  ],
 				  onPostRender: function () {
 				    // Select the second item by default
 				    this.value('&nbsp;<em>Some italic text!</em>');
 				  }
 				});
+
+				editor.addButton('mybutton2', {
+					text: 'Download',
+					onclick : function() {
+						editor.insertContent('<p><a href="#" class="a-btn"><span class="a-btn-symbol">Z</span><span class="a-btn-text">Download Now</span><span class="a-btn-slide-text">Tải game hay cho PC</span><span class="a-btn-slide-icon">&nbsp;</span></a></p>');
+						// editor.windowManager.alert('Hello world!! Selection: ' + editor.selection.getContent({format : 'text'}));
+					}
+				});
+
 			},
 		  	//end add more button
 	       

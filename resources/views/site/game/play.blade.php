@@ -77,6 +77,14 @@
 				<div class="row">
 					<div class="column description">{!! $game->description !!}</div>
 					<div class="column description">{!! $game->download !!}</div>
+					<!-- <p>
+						<a href="#" class="a-btn">
+							<span class="a-btn-symbol">Z</span>
+							<span class="a-btn-text">Download Now</span> 
+							<span class="a-btn-slide-text">Windows Vista / Windows 7</span>
+							<span class="a-btn-slide-icon"></span>
+						</a>
+					</p> -->
 					<div class="column description">
 						@include('site.common.social')
 					</div>
