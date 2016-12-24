@@ -1133,6 +1133,29 @@ ul.mobile-menu {
 
 // end download button
 
+//go to top button
+a.gotop {
+	color: #3a3939;
+	position: fixed;
+	bottom: -2.500rem;
+	right: 1.875rem;
+	opacity: 0.75;
+	z-index: 9999;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	i.fa {
+		font-size: 2.500rem;
+	}
+}
+a.gototop {
+	bottom: 2.500rem;
+}
+
+// end go to top button
+
 // RESPONSIVE
 /* Small only */
 @media screen and (max-width: 39.9375em) {

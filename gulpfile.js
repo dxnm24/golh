@@ -20,7 +20,7 @@ elixir(function(mix) {
     ], 'public/css/app.css');
 
     mix.scripts([
-        '../../../node_modules/foundation-sites/node_modules/jquery/dist/jquery.js',
+        '../../../node_modules/jquery/dist/jquery.js',
 		'../../../node_modules/foundation-sites/dist/foundation.min.js',
 		'../../../node_modules/lazysizes/lazysizes.min.js',
 		'script.js'

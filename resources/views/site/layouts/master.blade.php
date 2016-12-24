@@ -20,6 +20,8 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 @endif
+
+<?php $device = getDevice2(); ?>
 			
 @include('site.common.top')
 @include('site.common.ad', ['posPc' => 1, 'posMobile' => 2])
@@ -37,6 +39,10 @@
 </div>
 @include('site.common.ad', ['posPc' => 3, 'posMobile' => 4])
 @include('site.common.bottom')
+
+@if($device != MOBILE)
+<a class="gotop" href="#" title="Lên đầu trang" rel="nofollow"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></a>
+@endif
 
 <script async src="{{ asset('js/app.js') }}"></script>
 </body>
