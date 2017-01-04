@@ -52,3 +52,5 @@ define('FRAME_HEIGHT', '510');
 define('DOMAINSITE', 'http://gameofflinehay.com');
 // replace string
 define('CONTACTFORM', '/%ContactForm%/');
+//responsive filemanager
+define('AKEY', 'db0ac2431a2e87c54852dbb0e7b9ed3d');
