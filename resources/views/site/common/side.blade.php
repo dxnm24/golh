@@ -9,7 +9,7 @@
 					<a class="search-button" onclick="$('.search-form').submit()"><i class="fa fa-search" aria-hidden="true"></i></a>
 				</div>
 			</div>
-			<p>Hãy nhập tên game, hoặc 1 phần tên game bạn muốn tìm kiếm. Ví dụ: <a title="game Age of Empires" href="/tim-kiem?name=age+of+empires">đế chế</a>, <a title="game Assassin's Creed" href="/tim-kiem?name=assassins+creed">Assassin's Creed</a>, <a title="game ban ga" href="/tim-kiem?name=chicken+invaders">ban ga</a> ...</p>
+			<p>Hãy nhập tên game, hoặc 1 phần tên game bạn muốn tìm kiếm. Ví dụ: <a title="game Age of Empires" href="{{ url('/tim-kiem?name=age+of+empires') }}">đế chế</a>, <a title="game Assassin's Creed" href="{{ url('/tim-kiem?name=assassins+creed') }}">Assassin's Creed</a>, <a title="game ban ga" href="{{ url('/tim-kiem?name=chicken+invaders') }}">ban ga</a> ...</p>
         </form>
 	</div>
 </div>

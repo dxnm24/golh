@@ -73,7 +73,7 @@ class AppServiceProvider extends ServiceProvider
         if(count($sub) > 0) {
             foreach($sub as $value) {
                 $hasChild = self::_hasChild($value->id);
-                $output .= '<li '.checkCurrent(url($value->url)).'><a href="'.$value->url.'">'.$value->name.'</a>';
+                $output .= '<li '.checkCurrent(url($value->url)).'><a href="'.url($value->url).'">'.$value->name.'</a>';
                 if($hasChild) {
                     $output .= '<ul class="menu">';
                     $output .= self::_visit($data, $type, $value->id);

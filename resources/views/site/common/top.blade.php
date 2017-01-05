@@ -7,7 +7,7 @@
 				<a class="mobile-menuopen" data-toggle="mobile-menubox" aria-controls="mobile-menubox" aria-haspopup="true" tabindex="0"><i class="fa fa-bars" aria-hidden="true"></i></a>
 			</div>
 			<div class="small-9 columns">
-				<a href="/" class="logo"><img src="/img/logo.png" alt="game offline hay" /></a>
+				<a href="{{ url('/') }}" class="logo"><img src="/img/logo.png" alt="game offline hay" /></a>
 			</div>
 		</div>
 	</div>
@@ -44,7 +44,7 @@
 @else
 <header>
 	<div class="row column">
-		<a href="/" class="logo"><img src="/img/logo.png" alt="game offline hay" /></a>
+		<a href="{{ url('/') }}" class="logo"><img src="/img/logo.png" alt="game offline hay" /></a>
 		{!! $topmenu !!}
 	</div>
 </header>
