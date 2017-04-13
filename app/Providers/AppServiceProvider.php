@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use DB;
+use Cache;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //head tag code
-        view()->share('scriptcode', self::getCode());
+        view()->share('scriptcode', self::getConfigSite());
         //all menu
         view()->share('topmenu', self::getMenu());
         // self::getMenus(MENUTYPE1, 'topmenu');
@@ -27,11 +28,16 @@ class AppServiceProvider extends ServiceProvider
         self::getMenus(MENUTYPE7, 'mobilemenu');
     }
 
-    private function getCode()
+    private function getConfigSite($field = 'code')
     {
-        $config = DB::table('configs')->first();
+        if(Cache::has('configsite')) {
+            $config = Cache::get('configsite');
+        } else {
+            $config = DB::table('configs')->first();
+            Cache::forever('configsite', $config);
+        }
         if(isset($config)) {
-            return $config->code;
+            return $config->$field;
         } else {
             return '';
         }
@@ -39,12 +45,18 @@ class AppServiceProvider extends ServiceProvider
 
     private function getMenus($type, $name)
     {
-        $menu = DB::table('menus')
-            ->where('type', $type)
-            ->where('status', ACTIVE)
-            ->orderByRaw(DB::raw("position = '0', position"))
-            ->orderBy('name')
-            ->get();
+        $cacheName = 'menu_'.$type.'_'.$name;
+        if(Cache::has($cacheName)) {
+            $menu = Cache::get($cacheName);
+        } else {
+            $menu = DB::table('menus')
+                ->where('type', $type)
+                ->where('status', ACTIVE)
+                ->orderByRaw(DB::raw("position = '0', position"))
+                ->orderBy('name')
+                ->get();
+            Cache::forever($cacheName, $menu);
+        }
         view()->share($name, $menu);
     }
 
