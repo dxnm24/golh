@@ -128,3 +128,4 @@ RewriteCond %{HTTP_HOST} ^www\.gameofflinehay\.choigames\.net$
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule ^/?$ "http\:\/\/gameofflinehay\.com\/" [R=301,L]
+
