@@ -34,7 +34,7 @@
 	@endif
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<title>@yield('title')</title>
-	@if($scriptcode && !isset($no_adsense))
+	@if($scriptcode)
 	{!! $scriptcode !!}
 	@endif
 </head>

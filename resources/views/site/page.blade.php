@@ -24,7 +24,6 @@
 			'meta_keyword' => $meta_keyword,
 			'meta_description' => $meta_description,
 			'meta_image' => $meta_image,
-			'no_adsense' => true,
 		);
 ?>
 @extends('site.layouts.master', $extendData)
