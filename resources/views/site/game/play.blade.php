@@ -76,7 +76,7 @@
 			<div class="info">
 				<div class="row">
 					<div class="column description">{!! $game->description !!}</div>
-					<div class="column description">{!! $game->download !!}</div>
+					<!-- <div class="column description">{{-- $game->download --}}</div> -->
 					<div class="column description">
 						@include('site.common.social')
 					</div>
