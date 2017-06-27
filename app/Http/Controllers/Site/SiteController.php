@@ -14,7 +14,39 @@ use App\Models\Contact;
 
 class SiteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
+    {
+        //check page
+        $page = ($request->page)?$request->page:1;
+
+        //cache name
+        $cacheName = 'index_'.$page;
+        $device = getDevice();
+        if($device == MOBILE) {
+            $cacheName = $cacheName.'_mobile';
+        }
+        //get cache
+        if(Cache::has($cacheName)) {
+            return Cache::get($cacheName);
+        }
+
+        //data
+        $data = DB::table('games')
+            ->select('id', 'name', 'slug', 'image', 'summary', 'type')
+            ->where('status', ACTIVE)
+            ->where('start_date', '<=', date('Y-m-d H:i:s'))
+            ->paginate(PAGINATE);
+
+        //seo meta
+        $seo = DB::table('configs')->where('status', ACTIVE)->first();
+        //put cache
+        $html = view('site.index', ['data' => $data, 'seo' => $seo, 'request' => $request])->render();
+        Cache::forever($cacheName, $html);
+        //return view
+        return view('site.index', ['data' => $data, 'seo' => $seo, 'request' => $request]);
+    }
+
+    public function index2()
     {
         //cache name
         $cacheName = 'index';
