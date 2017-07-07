@@ -77,6 +77,9 @@
 				<div class="row">
 					<div class="column description">{!! $game->description !!}</div>
 					<!-- <div class="column description">{{-- $game->download --}}</div> -->
+
+					@include('site.common.ad', ['posPc' => 5, 'posMobile' => 6])
+
 					<div class="column description">
 						@include('site.common.social')
 					</div>
